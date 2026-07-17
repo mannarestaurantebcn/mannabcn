@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"/c/Users/kevin/Desktop/KLENT/Client/Manna Restaurante\" -maxdepth 3 -type f 2>/dev/null)"
+    ]
+  }
+}
