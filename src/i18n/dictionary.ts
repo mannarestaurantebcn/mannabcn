@@ -120,6 +120,12 @@ export type Dictionary = {
       requestsPlaceholder: string;
       timeSelectDateFirst: string;
       timeChoose: string;
+      nameError: string;
+      emailError: string;
+      phoneError: string;
+      guestsError: string;
+      dateError: string;
+      timeError: string;
       submit: string;
       submitting: string;
       disclaimer: string;

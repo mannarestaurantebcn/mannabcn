@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { useMemo, useRef, useState, type ChangeEvent, type FocusEvent, type FormEvent } from "react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionary";
 import { Button } from "@/components/ui/Button";
@@ -14,6 +14,8 @@ type ReservationFormProps = {
 const inputClass =
   "w-full border border-line bg-maroon-soft/40 px-4 py-3 text-sm text-cream placeholder:text-cream/35 transition-colors duration-300 [color-scheme:dark] focus:border-gold focus:outline-none";
 const labelClass = "mb-2 block text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-cream/55";
+// Native <option> popups don't render translucent backgrounds reliably, so they need a solid color.
+const optionStyle = { backgroundColor: "#5c160a", color: "#f7f2e9" };
 
 type Status = "idle" | "submitting" | "success" | "error" | "unavailable";
 
@@ -22,18 +24,67 @@ const todayIso = () => new Date().toISOString().slice(0, 10);
 const MAX_DAYS_AHEAD = 180;
 const maxBookableIso = () => new Date(Date.now() + MAX_DAYS_AHEAD * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 
+type FormControl = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+
+/** Mirrors PHONE_RE / MIN_NAME_LENGTH in the reservations API route. Enforced via
+ * setCustomValidity rather than relying solely on `pattern`/`minLength`, since some
+ * browsers apply those constraints inconsistently. */
+const PHONE_RE = /^[0-9+()\-\s]{6,30}$/;
+const MIN_NAME_LENGTH = 3;
+
+function applyCustomValidity(target: FormControl) {
+  if (!("setCustomValidity" in target)) return;
+  if (target.name === "phone") {
+    target.setCustomValidity(target.value === "" || PHONE_RE.test(target.value) ? "" : "invalid");
+  } else if (target.name === "name") {
+    target.setCustomValidity(target.value === "" || target.value.trim().length >= MIN_NAME_LENGTH ? "" : "invalid");
+  }
+}
+
+const PHONE_ALLOWED_CHARS = /[^0-9+()\-\s]/g;
+
+function handlePhoneInput(event: FormEvent<HTMLInputElement>) {
+  const input = event.currentTarget;
+  const sanitized = input.value.replace(PHONE_ALLOWED_CHARS, "");
+  if (sanitized !== input.value) input.value = sanitized;
+}
+
 export function ReservationForm({ form, locale }: ReservationFormProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [isValid, setIsValid] = useState(false);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Set<string>>(new Set());
   const formRef = useRef<HTMLFormElement>(null);
   const minDate = useMemo(() => todayIso(), []);
   const maxDate = useMemo(() => maxBookableIso(), []);
   const timeSlots = useMemo(() => (date ? getTimeSlots(date) : []), [date]);
 
-  function handleFormInput() {
+  function handleFormInput(event: FormEvent<HTMLFormElement>) {
+    const target = event.target as unknown as FormControl;
+    applyCustomValidity(target);
     setIsValid(formRef.current?.checkValidity() ?? false);
+
+    // Clear an already-shown error as soon as the field becomes valid again.
+    if (target.name && fieldErrors.has(target.name) && target.validity?.valid) {
+      setFieldErrors((prev) => {
+        const next = new Set(prev);
+        next.delete(target.name);
+        return next;
+      });
+    }
+  }
+
+  function handleFieldBlur(event: FocusEvent<HTMLFormElement>) {
+    const target = event.target as unknown as FormControl;
+    if (!target.name) return;
+    applyCustomValidity(target);
+    setFieldErrors((prev) => {
+      const next = new Set(prev);
+      if (target.validity.valid) next.delete(target.name);
+      else next.add(target.name);
+      return next;
+    });
   }
 
   function handleDateChange(event: ChangeEvent<HTMLInputElement>) {
@@ -89,7 +140,14 @@ export function ReservationForm({ form, locale }: ReservationFormProps) {
   }
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} onInput={handleFormInput} noValidate className="grid gap-6 sm:grid-cols-2">
+    <form
+      ref={formRef}
+      onSubmit={handleSubmit}
+      onInput={handleFormInput}
+      onBlur={handleFieldBlur}
+      noValidate
+      className="grid gap-6 sm:grid-cols-2"
+    >
       {/* Honeypot: hidden from real users, but bots that fill every field will trip it. */}
       <div aria-hidden="true" style={{ position: "absolute", left: -9999 }}>
         <label htmlFor="company">Empresa</label>
@@ -99,25 +157,58 @@ export function ReservationForm({ form, locale }: ReservationFormProps) {
         <label className={labelClass} htmlFor="name">
           {form.name}
         </label>
-        <input id="name" name="name" type="text" autoComplete="name" required maxLength={100} className={inputClass} />
+        <input
+          id="name"
+          name="name"
+          type="text"
+          autoComplete="name"
+          required
+          minLength={3}
+          maxLength={100}
+          className={inputClass}
+        />
+        {fieldErrors.has("name") && <p className="mt-1 text-[0.72rem] text-terracotta">{form.nameError}</p>}
       </div>
       <div>
         <label className={labelClass} htmlFor="email">
           {form.email}
         </label>
         <input id="email" name="email" type="email" autoComplete="email" required maxLength={200} className={inputClass} />
+        {fieldErrors.has("email") && <p className="mt-1 text-[0.72rem] text-terracotta">{form.emailError}</p>}
       </div>
       <div>
         <label className={labelClass} htmlFor="phone">
           {form.phone}
         </label>
-        <input id="phone" name="phone" type="tel" autoComplete="tel" required maxLength={30} className={inputClass} />
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          inputMode="tel"
+          pattern="[0-9+()\-\s]{6,30}"
+          onInput={handlePhoneInput}
+          required
+          maxLength={30}
+          className={inputClass}
+        />
+        {fieldErrors.has("phone") && <p className="mt-1 text-[0.72rem] text-terracotta">{form.phoneError}</p>}
       </div>
       <div>
         <label className={labelClass} htmlFor="guests">
           {form.guests}
         </label>
-        <input id="guests" name="guests" type="number" min={1} max={20} required className={inputClass} />
+        <input
+          id="guests"
+          name="guests"
+          type="number"
+          inputMode="numeric"
+          min={1}
+          max={20}
+          required
+          className={inputClass}
+        />
+        {fieldErrors.has("guests") && <p className="mt-1 text-[0.72rem] text-terracotta">{form.guestsError}</p>}
       </div>
       <div>
         <label className={labelClass} htmlFor="date">
@@ -127,6 +218,7 @@ export function ReservationForm({ form, locale }: ReservationFormProps) {
           id="date"
           name="date"
           type="date"
+          lang={locale === "en" ? "en-GB" : "es-ES"}
           min={minDate}
           max={maxDate}
           required
@@ -134,6 +226,7 @@ export function ReservationForm({ form, locale }: ReservationFormProps) {
           onChange={handleDateChange}
           className={inputClass}
         />
+        {fieldErrors.has("date") && <p className="mt-1 text-[0.72rem] text-terracotta">{form.dateError}</p>}
       </div>
       <div>
         <label className={labelClass} htmlFor="time">
@@ -148,15 +241,16 @@ export function ReservationForm({ form, locale }: ReservationFormProps) {
           onChange={(event) => setTime(event.target.value)}
           className={inputClass}
         >
-          <option value="" disabled>
+          <option value="" disabled style={optionStyle}>
             {date ? form.timeChoose : form.timeSelectDateFirst}
           </option>
           {timeSlots.map((slot) => (
-            <option key={slot} value={slot}>
+            <option key={slot} value={slot} style={optionStyle}>
               {slot}
             </option>
           ))}
         </select>
+        {fieldErrors.has("time") && <p className="mt-1 text-[0.72rem] text-terracotta">{form.timeError}</p>}
       </div>
       <div className="sm:col-span-2">
         <label className={labelClass} htmlFor="requests">

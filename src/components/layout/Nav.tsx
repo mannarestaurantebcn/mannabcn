@@ -52,7 +52,7 @@ export function Nav({ locale, nav, languageSwitcherLabel }: NavProps) {
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-10">
-        <Logo locale={locale} variant="light" />
+        <Logo locale={locale} />
 
         <nav aria-label={nav.mainNavLabel} className="hidden md:block">
           <ul className="flex items-center gap-8">

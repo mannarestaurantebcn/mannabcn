@@ -5,9 +5,11 @@ import { isTimeSlotValid } from "@/lib/opening-hours";
 import { sendReservationConfirmationEmail } from "@/lib/email";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_RE = /^[0-9+()\-\s]{6,30}$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const TIME_RE = /^\d{2}:\d{2}$/;
 
+const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 200;
 const MAX_PHONE_LENGTH = 30;
@@ -21,13 +23,13 @@ function parseReservationInput(
   if (typeof body !== "object" || body === null) return { ok: false, error: "invalid_body" };
   const { name, email, phone, date, time, guests, requests, locale } = body as Record<string, unknown>;
 
-  if (typeof name !== "string" || name.trim().length === 0 || name.length > MAX_NAME_LENGTH) {
+  if (typeof name !== "string" || name.trim().length < MIN_NAME_LENGTH || name.length > MAX_NAME_LENGTH) {
     return { ok: false, error: "invalid_name" };
   }
   if (typeof email !== "string" || !EMAIL_RE.test(email) || email.length > MAX_EMAIL_LENGTH) {
     return { ok: false, error: "invalid_email" };
   }
-  if (typeof phone !== "string" || phone.trim().length === 0 || phone.length > MAX_PHONE_LENGTH) {
+  if (typeof phone !== "string" || phone.length > MAX_PHONE_LENGTH || !PHONE_RE.test(phone.trim())) {
     return { ok: false, error: "invalid_phone" };
   }
   if (typeof date !== "string" || !DATE_RE.test(date)) return { ok: false, error: "invalid_date" };

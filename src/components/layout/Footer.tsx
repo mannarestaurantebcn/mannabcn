@@ -28,7 +28,7 @@ export function Footer({ locale, dictionary }: FooterProps) {
 
       <div className="mx-auto grid max-w-[1400px] gap-12 border-b border-cream/10 pb-14 md:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
-          <Logo locale={locale} variant="light" />
+          <Logo locale={locale} />
           <p className="mt-5 max-w-[30ch] whitespace-pre-line text-sm leading-relaxed text-cream/45">
             {footer.tagline}
           </p>
