@@ -218,6 +218,7 @@ export const en: Dictionary = {
       disclaimer: "You'll receive confirmation of your booking by phone or email.",
       successTitle: "Request received!",
       successMessage: "Thank you, we've received your booking request. We'll confirm by phone or email as soon as possible.",
+      successSpamNote: "We've sent you a confirmation email — if you don't see it, please check your spam folder too.",
       errorMessage: "We couldn't send your request. Please try again, or call us at +34 633 83 20 57.",
       unavailableMessage: "Sorry, there are no tables available for that date and time. Please try another time, or call us at +34 633 83 20 57.",
     },

@@ -218,6 +218,7 @@ export const es: Dictionary = {
       disclaimer: "Recibirás la confirmación de tu reserva por teléfono o email.",
       successTitle: "¡Solicitud recibida!",
       successMessage: "Gracias, hemos recibido tu solicitud de reserva. Te confirmaremos por teléfono o email lo antes posible.",
+      successSpamNote: "Te hemos enviado un email de confirmación — si no lo ves, revisa también la carpeta de spam.",
       errorMessage: "No hemos podido enviar tu solicitud. Por favor, inténtalo de nuevo o llámanos al +34 633 83 20 57.",
       unavailableMessage: "Lo sentimos, no quedan mesas disponibles para esa fecha y hora. Prueba otro horario o llámanos al +34 633 83 20 57.",
     },

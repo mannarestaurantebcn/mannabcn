@@ -83,6 +83,7 @@ export function ReservationForm({ form, locale }: ReservationFormProps) {
       <div role="status" aria-live="polite" className="border border-gold/40 bg-gold/5 p-8 text-center">
         <h3 className="font-display text-xl italic text-cream">{form.successTitle}</h3>
         <p className="mt-3 text-sm text-cream/70">{form.successMessage}</p>
+        <p className="mt-2 text-[0.78rem] text-cream/45">{form.successSpamNote}</p>
       </div>
     );
   }

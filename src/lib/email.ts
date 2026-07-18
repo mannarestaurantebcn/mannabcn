@@ -73,10 +73,27 @@ export async function sendReservationConfirmationEmail(reservation: ReservationI
     </div>
   `;
 
+  const text = [
+    `${copy.greeting(reservation.name)}`,
+    "",
+    copy.intro,
+    "",
+    `${copy.date}: ${formatDate(reservation.date, locale)}`,
+    `${copy.time}: ${reservation.time}`,
+    `${copy.guests}: ${reservation.guests}`,
+    "",
+    copy.note,
+    "",
+    copy.thanks,
+    "",
+    `Mannà Restaurante — ${copy.address}`,
+  ].join("\n");
+
   await transporter.sendMail({
     from: `Mannà Restaurante <${getEnv("GMAIL_USER")}>`,
     to: reservation.email,
     subject: copy.subject,
+    text,
     html,
   });
 }

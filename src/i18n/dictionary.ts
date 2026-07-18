@@ -125,6 +125,7 @@ export type Dictionary = {
       disclaimer: string;
       successTitle: string;
       successMessage: string;
+      successSpamNote: string;
       errorMessage: string;
       unavailableMessage: string;
     };
