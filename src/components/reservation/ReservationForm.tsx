@@ -1,12 +1,14 @@
 "use client";
 
 import { useMemo, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionary";
 import { Button } from "@/components/ui/Button";
 import { getTimeSlots } from "@/lib/opening-hours";
 
 type ReservationFormProps = {
   form: Dictionary["reservation"]["form"];
+  locale: Locale;
 };
 
 const inputClass =
@@ -16,14 +18,18 @@ const labelClass = "mb-2 block text-[0.65rem] font-semibold uppercase tracking-[
 type Status = "idle" | "submitting" | "success" | "error" | "unavailable";
 
 const todayIso = () => new Date().toISOString().slice(0, 10);
+/** Mirrors MAX_DAYS_AHEAD in the reservations API route. */
+const MAX_DAYS_AHEAD = 180;
+const maxBookableIso = () => new Date(Date.now() + MAX_DAYS_AHEAD * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 
-export function ReservationForm({ form }: ReservationFormProps) {
+export function ReservationForm({ form, locale }: ReservationFormProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [isValid, setIsValid] = useState(false);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
   const minDate = useMemo(() => todayIso(), []);
+  const maxDate = useMemo(() => maxBookableIso(), []);
   const timeSlots = useMemo(() => (date ? getTimeSlots(date) : []), [date]);
 
   function handleFormInput() {
@@ -53,6 +59,8 @@ export function ReservationForm({ form }: ReservationFormProps) {
           time: data.get("time"),
           guests: Number(data.get("guests")),
           requests: data.get("requests"),
+          company: data.get("company"),
+          locale,
         }),
       });
 
@@ -72,7 +80,7 @@ export function ReservationForm({ form }: ReservationFormProps) {
 
   if (status === "success") {
     return (
-      <div className="border border-gold/40 bg-gold/5 p-8 text-center">
+      <div role="status" aria-live="polite" className="border border-gold/40 bg-gold/5 p-8 text-center">
         <h3 className="font-display text-xl italic text-cream">{form.successTitle}</h3>
         <p className="mt-3 text-sm text-cream/70">{form.successMessage}</p>
       </div>
@@ -81,23 +89,28 @@ export function ReservationForm({ form }: ReservationFormProps) {
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} onInput={handleFormInput} noValidate className="grid gap-6 sm:grid-cols-2">
+      {/* Honeypot: hidden from real users, but bots that fill every field will trip it. */}
+      <div aria-hidden="true" style={{ position: "absolute", left: -9999 }}>
+        <label htmlFor="company">Empresa</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <div>
         <label className={labelClass} htmlFor="name">
           {form.name}
         </label>
-        <input id="name" name="name" type="text" autoComplete="name" required className={inputClass} />
+        <input id="name" name="name" type="text" autoComplete="name" required maxLength={100} className={inputClass} />
       </div>
       <div>
         <label className={labelClass} htmlFor="email">
           {form.email}
         </label>
-        <input id="email" name="email" type="email" autoComplete="email" required className={inputClass} />
+        <input id="email" name="email" type="email" autoComplete="email" required maxLength={200} className={inputClass} />
       </div>
       <div>
         <label className={labelClass} htmlFor="phone">
           {form.phone}
         </label>
-        <input id="phone" name="phone" type="tel" autoComplete="tel" required className={inputClass} />
+        <input id="phone" name="phone" type="tel" autoComplete="tel" required maxLength={30} className={inputClass} />
       </div>
       <div>
         <label className={labelClass} htmlFor="guests">
@@ -114,6 +127,7 @@ export function ReservationForm({ form }: ReservationFormProps) {
           name="date"
           type="date"
           min={minDate}
+          max={maxDate}
           required
           value={date}
           onChange={handleDateChange}
@@ -151,6 +165,7 @@ export function ReservationForm({ form }: ReservationFormProps) {
           id="requests"
           name="requests"
           rows={4}
+          maxLength={500}
           placeholder={form.requestsPlaceholder}
           className={inputClass}
         />
@@ -160,8 +175,10 @@ export function ReservationForm({ form }: ReservationFormProps) {
           {status === "submitting" ? form.submitting : form.submit}
         </Button>
         <p className="mt-4 text-[0.78rem] text-cream/45">{form.disclaimer}</p>
-        {status === "error" && <p className="mt-2 text-[0.78rem] text-terracotta">{form.errorMessage}</p>}
-        {status === "unavailable" && <p className="mt-2 text-[0.78rem] text-terracotta">{form.unavailableMessage}</p>}
+        <div role="status" aria-live="polite">
+          {status === "error" && <p className="mt-2 text-[0.78rem] text-terracotta">{form.errorMessage}</p>}
+          {status === "unavailable" && <p className="mt-2 text-[0.78rem] text-terracotta">{form.unavailableMessage}</p>}
+        </div>
       </div>
     </form>
   );

@@ -39,7 +39,7 @@ export default async function ReservationPage({ params }: { params: Promise<Page
           />
         </Reveal>
         <Reveal delay={1}>
-          <ReservationForm form={reservation.form} />
+          <ReservationForm form={reservation.form} locale={locale} />
         </Reveal>
       </div>
     </SubpageShell>
