@@ -1,26 +1,214 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Dark, warm palette: maroon base, gold buttons, tan alternating sections. */
+  --color-cream: #f7f2e9; /* light text/foreground on maroon backgrounds */
+  --color-charcoal: #430c05; /* primary dark background; also the dark text color on tan sections */
+  --color-charcoal-soft: rgba(247, 242, 233, 0.65); /* muted body copy on maroon backgrounds */
+  --color-maroon-soft: #5c160a; /* lighter maroon for cards/inputs floating on a maroon section */
+  --color-terracotta: #b5502e; /* secondary accent (hovers, outlines) */
+  --color-terracotta-dark: #96401f;
+  --color-gold: #ffbf66; /* buttons + primary accents */
+  --color-gold-dark: #e0a64d; /* button hover shade */
+  --color-sand: #e3cd8b; /* alternating section background (tan) */
+  --color-noir: #000000; /* true black — "Nuestra casa" section, footer */
+  --color-line: rgba(247, 242, 233, 0.14); /* hairlines on dark backgrounds */
+  --color-line-dark: rgba(67, 12, 5, 0.18); /* hairlines on tan backgrounds */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--color-cream);
+  --color-charcoal: var(--color-charcoal);
+  --color-maroon-soft: var(--color-maroon-soft);
+  --color-terracotta: var(--color-terracotta);
+  --color-terracotta-dark: var(--color-terracotta-dark);
+  --color-gold: var(--color-gold);
+  --color-gold-dark: var(--color-gold-dark);
+  --color-sand: var(--color-sand);
+  --color-noir: var(--color-noir);
+  --color-line: var(--color-line);
+  --color-line-dark: var(--color-line-dark);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-charcoal);
+}
+
+/* ----------------------------------------------------------------
+   Scroll reveal utility
+---------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ----------------------------------------------------------------
+   Hero scroll indicator
+---------------------------------------------------------------- */
+@keyframes scroll-line {
+  0% { top: -100%; }
+  100% { top: 200%; }
+}
+.animate-scroll-line {
+  animation: scroll-line 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ----------------------------------------------------------------
+   Page transition — replayed on every route change (see PageTransition.tsx)
+---------------------------------------------------------------- */
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-page-in {
+  animation: page-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ----------------------------------------------------------------
+   Mobile nav panel entrance
+---------------------------------------------------------------- */
+@keyframes mobile-panel-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-mobile-panel-in {
+  animation: mobile-panel-in 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Generic fade-up entrance for elements that mount already "settled"
+   (e.g. staggered list items) — a .reveal/is-visible pair won't replay
+   on mount since both classes land together, so this uses a keyframe. */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ----------------------------------------------------------------
+   Gallery filter tile entrance
+---------------------------------------------------------------- */
+@keyframes tile-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-tile-in {
+  animation: tile-in 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* ----------------------------------------------------------------
+   Wave motif — gentle breathing loop
+---------------------------------------------------------------- */
+@keyframes wave-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+.animate-wave-bob {
+  animation: wave-bob 3.2s ease-in-out infinite;
+}
+
+/* ----------------------------------------------------------------
+   Card lift on hover (light backgrounds)
+---------------------------------------------------------------- */
+.card-hover {
+  transition:
+    transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.45s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -28px rgba(34, 29, 24, 0.35);
+}
+
+/* Card lift on hover (dark backgrounds — glow instead of shadow) */
+.card-hover-dark {
+  transition:
+    transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 0.45s ease;
+}
+.card-hover-dark:hover {
+  transform: translateY(-6px);
+  background-color: rgba(247, 242, 233, 0.04);
+}
+
+/* ----------------------------------------------------------------
+   Self-contained image/placeholder zoom on hover
+---------------------------------------------------------------- */
+.media-zoom {
+  overflow: hidden;
+}
+.media-zoom > .media-zoom-inner {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.media-zoom:hover > .media-zoom-inner {
+  transform: scale(1.08);
+}
+
+/* ----------------------------------------------------------------
+   Animated underline for text links
+---------------------------------------------------------------- */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 0;
+  background: currentColor;
+  transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ----------------------------------------------------------------
+   EditorialSplit — aligns the image's top with the title (not the
+   eyebrow) of the text column on desktop (see EditorialSplit.tsx).
+---------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .editorial-image-align {
+    margin-top: 7.5rem;
+  }
+}
+
+/* ----------------------------------------------------------------
+   Reduced motion — accessibility override, wins over every animation
+   and transition declared above.
+---------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
