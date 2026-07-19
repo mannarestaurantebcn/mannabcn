@@ -28,7 +28,7 @@ export function AllergenIcon({ code, size = 40 }: AllergenIconProps) {
 
   return (
     <Image
-      src={`/badges alergenes/${fileName}`}
+      src={`/badges-alergenes/${fileName}`}
       alt={code}
       width={size}
       height={size}
