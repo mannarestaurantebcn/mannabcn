@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { buildPageMetadata } from "@/lib/seo";
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -17,7 +18,11 @@ export async function generateMetadata({
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "es";
   const dict = getDictionary(locale);
-  return { title: dict.nav.gallery };
+  const description =
+    locale === "en"
+      ? "See Mannà in pictures: our dishes, dining room and terrace in the heart of Barcelona."
+      : "Descubre Mannà en imágenes: nuestros platos, la sala y la terraza en el corazón de Barcelona.";
+  return buildPageMetadata({ locale, routeKey: "gallery", title: dict.nav.gallery, description });
 }
 
 export default async function GalleryPage({ params }: { params: Promise<PageParams> }) {

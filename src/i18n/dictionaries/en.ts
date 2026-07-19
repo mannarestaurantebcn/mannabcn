@@ -279,13 +279,19 @@ export const en: Dictionary = {
     socialTitle: "Social",
     socialSoon: "Coming soon",
     rights: "All rights reserved.",
-    privacy: "Privacy",
-    terms: "Terms of use",
-    cookies: "Cookies",
     credit: "Built by",
   },
   common: {
     languageSwitcherLabel: "Switch language",
     placeholderPhotoLabel: "Photo coming soon",
+  },
+  cookieBanner: {
+    message:
+      "We only use essential technical cookies for the site to work. The map on the contact page uses Google Maps, which may set its own cookies if you choose to load it. More information in our",
+    policyLinkLabel: "cookie policy",
+    accept: "Accept",
+    reject: "Reject",
+    mapBlocked: "This map uses cookies from Google. Accept cookies to view it.",
+    mapLoad: "Load map",
   },
 };

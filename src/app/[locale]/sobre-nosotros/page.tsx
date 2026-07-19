@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { buildPageMetadata } from "@/lib/seo";
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import { EditorialSplit } from "@/components/sections/EditorialSplit";
 import { ValuesGrid } from "@/components/sections/ValuesGrid";
@@ -20,7 +21,11 @@ export async function generateMetadata({
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "es";
   const dict = getDictionary(locale);
-  return { title: dict.nav.about };
+  const description =
+    locale === "en"
+      ? "Discover the story of Mannà, a neighbourhood restaurant in Poblenou, Barcelona: honest Mediterranean cooking, trusted produce, and a welcoming table to share."
+      : "Descubre la historia de Mannà, restaurante de barrio en Poblenou, Barcelona: cocina mediterránea honesta, producto de confianza y ambiente para compartir.";
+  return buildPageMetadata({ locale, routeKey: "about", title: dict.nav.about, description });
 }
 
 export default async function AboutPage({ params }: { params: Promise<PageParams> }) {

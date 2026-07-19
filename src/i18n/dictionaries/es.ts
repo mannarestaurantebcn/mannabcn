@@ -279,13 +279,19 @@ export const es: Dictionary = {
     socialTitle: "Redes",
     socialSoon: "Próximamente",
     rights: "Todos los derechos reservados.",
-    privacy: "Privacidad",
-    terms: "Términos de uso",
-    cookies: "Cookies",
     credit: "Desarrollado por",
   },
   common: {
     languageSwitcherLabel: "Cambiar idioma",
     placeholderPhotoLabel: "Foto próximamente",
+  },
+  cookieBanner: {
+    message:
+      "Usamos únicamente cookies técnicas necesarias para el funcionamiento del sitio. El mapa de la página de contacto usa Google Maps, que puede establecer sus propias cookies si decides cargarlo. Más información en nuestra",
+    policyLinkLabel: "política de cookies",
+    accept: "Aceptar",
+    reject: "Rechazar",
+    mapBlocked: "Este mapa usa cookies de Google. Acepta las cookies para poder verlo.",
+    mapLoad: "Cargar mapa",
   },
 };

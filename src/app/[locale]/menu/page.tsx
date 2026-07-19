@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { buildPageMetadata } from "@/lib/seo";
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -21,7 +22,11 @@ export async function generateMetadata({
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "es";
   const dict = getDictionary(locale);
-  return { title: dict.nav.menu };
+  const description =
+    locale === "en"
+      ? "Browse Mannà's full menu: tapas, mixed plates, rice dishes, sandwiches and drinks, with allergens listed and an up-to-date daily set menu."
+      : "Consulta la carta completa de Mannà: tapas, platos combinados, arroces, bocadillos y bebidas, con alérgenos indicados y menú del día actualizado.";
+  return buildPageMetadata({ locale, routeKey: "menu", title: dict.nav.menu, description });
 }
 
 export default async function MenuPage({ params }: { params: Promise<PageParams> }) {

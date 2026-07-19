@@ -175,13 +175,18 @@ export type Dictionary = {
     socialTitle: string;
     socialSoon: string;
     rights: string;
-    privacy: string;
-    terms: string;
-    cookies: string;
     credit: string;
   };
   common: {
     languageSwitcherLabel: string;
     placeholderPhotoLabel: string;
+  };
+  cookieBanner: {
+    message: string;
+    policyLinkLabel: string;
+    accept: string;
+    reject: string;
+    mapBlocked: string;
+    mapLoad: string;
   };
 };

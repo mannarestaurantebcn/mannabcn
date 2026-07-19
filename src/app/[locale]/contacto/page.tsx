@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { buildPageMetadata } from "@/lib/seo";
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -18,7 +19,11 @@ export async function generateMetadata({
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "es";
   const dict = getDictionary(locale);
-  return { title: dict.nav.contact };
+  const description =
+    locale === "en"
+      ? "Get in touch with Mannà Restaurant in Barcelona: address, phone, email and a contact form for large bookings or enquiries."
+      : "Ponte en contacto con Mannà Restaurant en Barcelona: dirección, teléfono, email y formulario de contacto para reservas grandes o consultas.";
+  return buildPageMetadata({ locale, routeKey: "contact", title: dict.nav.contact, description });
 }
 
 export default async function ContactPage({ params }: { params: Promise<PageParams> }) {
@@ -26,7 +31,7 @@ export default async function ContactPage({ params }: { params: Promise<PagePara
   if (!isLocale(rawLocale)) notFound();
   const locale: Locale = rawLocale;
   const dict = getDictionary(locale);
-  const { contact } = dict;
+  const { contact, cookieBanner } = dict;
 
   return (
     <SubpageShell>
@@ -86,6 +91,8 @@ export default async function ContactPage({ params }: { params: Promise<PagePara
             query={contact.address}
             title={contact.mapPlaceholder}
             className="h-[360px] w-full md:h-[420px]"
+            blockedMessage={cookieBanner.mapBlocked}
+            loadLabel={cookieBanner.mapLoad}
           />
         </Reveal>
       </div>

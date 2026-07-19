@@ -6,6 +6,8 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { PageTransition } from "@/components/layout/PageTransition";
+import { CookieBanner } from "@/components/legal/CookieBanner";
+import { RestaurantJsonLd } from "@/components/seo/RestaurantJsonLd";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -36,15 +38,31 @@ export async function generateMetadata({
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "es";
   const dict = getDictionary(locale);
+  const title = `${dict.meta.siteName} — ${dict.meta.titleSuffix}`;
 
   return {
+    // TODO: replace with the real domain once it's registered (e.g. via NEXT_PUBLIC_SITE_URL),
+    // so absolute OG/Twitter image URLs resolve correctly instead of falling back to localhost.
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
     title: {
-      default: `${dict.meta.siteName} — ${dict.meta.titleSuffix}`,
+      default: title,
       template: `%s — ${dict.meta.siteName}`,
     },
     description: dict.meta.defaultDescription,
     alternates: {
       languages: { es: "/es", en: "/en" },
+    },
+    openGraph: {
+      title,
+      description: dict.meta.defaultDescription,
+      siteName: dict.meta.siteName,
+      locale: locale === "es" ? "es_ES" : "en_GB",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: dict.meta.defaultDescription,
     },
   };
 }
@@ -70,6 +88,7 @@ export default async function LocaleLayout({
       className={`${fraunces.variable} ${inter.variable} h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
+        <RestaurantJsonLd locale={locale} />
         <a
           href="#main-content"
           className="fixed left-4 top-4 z-[100] -translate-y-20 bg-gold px-4 py-2 text-sm font-medium text-charcoal transition-transform focus:translate-y-0"
@@ -81,6 +100,13 @@ export default async function LocaleLayout({
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer locale={locale} dictionary={dictionary} />
+        <CookieBanner
+          locale={locale}
+          message={dictionary.cookieBanner.message}
+          policyLinkLabel={dictionary.cookieBanner.policyLinkLabel}
+          accept={dictionary.cookieBanner.accept}
+          reject={dictionary.cookieBanner.reject}
+        />
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import { WaveDivider } from "@/components/ui/WaveDivider";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionary";
 import { path } from "@/lib/routes";
+import { cookiesPolicy, legalNotice, privacyPolicy, termsOfUse } from "@/lib/legal-content";
 
 type FooterProps = {
   locale: Locale;
@@ -20,6 +21,13 @@ export function Footer({ locale, dictionary }: FooterProps) {
     { href: path(locale, "reservation"), label: nav.reservation },
     { href: path(locale, "gallery"), label: nav.gallery },
     { href: path(locale, "contact"), label: nav.contact },
+  ];
+
+  const legalLinks = [
+    { href: path(locale, "legalNotice"), label: legalNotice[locale].title },
+    { href: path(locale, "privacy"), label: privacyPolicy[locale].title },
+    { href: path(locale, "terms"), label: termsOfUse[locale].title },
+    { href: path(locale, "cookies"), label: cookiesPolicy[locale].title },
   ];
 
   return (
@@ -94,10 +102,16 @@ export function Footer({ locale, dictionary }: FooterProps) {
       <div className="mx-auto flex max-w-[1400px] flex-col-reverse items-center gap-4 pt-6 text-[0.72rem] text-cream/25 md:flex-row md:justify-between">
         <span>© {new Date().getFullYear()} Mannà Restaurant. {footer.rights}</span>
         <div className="flex flex-col-reverse items-center gap-4 md:flex-row md:gap-6">
-          <div className="flex gap-6">
-            <span className="cursor-default">{footer.privacy}</span>
-            <span className="cursor-default">{footer.terms}</span>
-            <span className="cursor-default">{footer.cookies}</span>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            {legalLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="link-underline text-cream/25 transition-colors hover:text-cream"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
           <span>
             {footer.credit}{" "}

@@ -7,6 +7,10 @@ export const routeSlugs = {
   reservation: "reserva",
   gallery: "galeria",
   contact: "contacto",
+  legalNotice: "aviso-legal",
+  privacy: "privacidad",
+  terms: "terminos-de-uso",
+  cookies: "cookies",
 } as const;
 
 export type RouteKey = keyof typeof routeSlugs;
