@@ -67,13 +67,13 @@ export function Footer({ locale, dictionary }: FooterProps) {
           <p className="text-sm leading-relaxed text-cream/65">{contact.address}</p>
           <a
             href={`tel:${contact.phone.replace(/\s/g, "")}`}
-            className="link-underline mt-2 inline-block text-sm text-cream/65 transition-colors hover:text-cream"
+            className="link-underline mt-2 block text-sm text-cream/65 transition-colors hover:text-cream"
           >
             {contact.phone}
           </a>
           <a
             href={`mailto:${contact.email}`}
-            className="link-underline mt-1 inline-block text-sm text-cream/65 transition-colors hover:text-cream"
+            className="link-underline mt-2 block text-sm text-cream/65 transition-colors hover:text-cream"
           >
             {contact.email}
           </a>
