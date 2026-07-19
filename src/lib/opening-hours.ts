@@ -6,7 +6,7 @@
 export type DaySchedule = { open: string; close: string };
 
 const WEEKDAY: DaySchedule = { open: "07:00", close: "22:00" };
-const SATURDAY: DaySchedule = { open: "09:30", close: "21:00" };
+const SATURDAY: DaySchedule = { open: "09:30", close: "22:00" };
 const SUNDAY: DaySchedule = { open: "12:00", close: "17:00" };
 
 /**
