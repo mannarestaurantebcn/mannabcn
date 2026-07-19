@@ -58,11 +58,11 @@ export function Hero({ locale, home, placeholderLabel }: HeroProps) {
         </span>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-10 grid grid-cols-2 border-t border-cream/10 sm:grid-cols-4">
-        {infoItems.map((value) => (
+      <div className="absolute inset-x-0 bottom-0 z-10 grid grid-cols-1 border-t border-cream/10 sm:grid-cols-4">
+        {infoItems.map((value, index) => (
           <div
             key={value}
-            className="border-r border-cream/10 px-4 py-4 text-center text-[0.62rem] uppercase tracking-[0.14em] text-cream/50 last:border-r-0 sm:px-6"
+            className={`border-b border-cream/10 px-4 py-4 text-center text-[0.62rem] uppercase tracking-[0.14em] text-cream/50 last:border-b-0 sm:border-b-0 sm:border-r sm:px-6 ${index === infoItems.length - 1 ? "sm:border-r-0" : ""}`}
           >
             {value}
           </div>
