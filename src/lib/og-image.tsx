@@ -19,15 +19,74 @@ export function renderOgImage(locale: Locale) {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#FFFFFF",
-          color: "#430C05",
-          fontFamily: "sans-serif",
+          backgroundColor: "#000000",
+          fontFamily: "system-ui, sans-serif",
         }}
       >
-        <div style={{ display: "flex", fontSize: 128, fontWeight: 800, letterSpacing: -2 }}>MANNÀ</div>
-        <div style={{ width: 160, height: 6, backgroundColor: "#6B7C3C", borderRadius: 3, marginTop: 8, marginBottom: 20 }} />
-        <div style={{ display: "flex", fontSize: 26, letterSpacing: 12, opacity: 0.85 }}>RESTAURANT</div>
-        <div style={{ display: "flex", fontSize: 26, marginTop: 56, opacity: 0.6 }}>{tagline}</div>
+        {/* Logo SVG - simplified from the brand logo */}
+        <svg
+          width="280"
+          height="120"
+          viewBox="0 0 280 120"
+          style={{ marginBottom: 20 }}
+        >
+          {/* M letter in white */}
+          <text
+            x="140"
+            y="90"
+            fontSize="100"
+            fontWeight="bold"
+            textAnchor="middle"
+            fill="white"
+            fontFamily="serif"
+            letterSpacing="-4"
+          >
+            M
+          </text>
+          {/* "ANNÀ" in white */}
+          <text
+            x="145"
+            y="90"
+            fontSize="100"
+            fontWeight="bold"
+            textAnchor="start"
+            fill="white"
+            fontFamily="serif"
+            letterSpacing="-4"
+          >
+            ANNÀ
+          </text>
+        </svg>
+
+        {/* Olive line accent */}
+        <div style={{ width: 140, height: 4, backgroundColor: "#6B7C3C", borderRadius: 2, marginTop: 0, marginBottom: 24 }} />
+
+        {/* Restaurant label */}
+        <div
+          style={{
+            display: "flex",
+            fontSize: 22,
+            letterSpacing: 8,
+            color: "#F7F2E9",
+            marginBottom: 40,
+          }}
+        >
+          RESTAURANT
+        </div>
+
+        {/* Tagline */}
+        <div
+          style={{
+            display: "flex",
+            fontSize: 20,
+            color: "#F7F2E9",
+            opacity: 0.7,
+            textAlign: "center",
+            maxWidth: 600,
+          }}
+        >
+          {tagline}
+        </div>
       </div>
     ),
     { width: 1200, height: 630 },
