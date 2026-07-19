@@ -28,7 +28,7 @@ export const es: Dictionary = {
     scroll: "Descubre",
     infoBar: {
       address: "Calle Llull 74, 08005 Barcelona",
-      hours: "Lun–Vie 7h–22h",
+      hours: "Abierto todos los días",
       phone: "+34 633 83 20 57",
       cuisine: "Cocina mediterránea",
     },
@@ -262,6 +262,13 @@ export const es: Dictionary = {
       email: "Correo electrónico",
       message: "Mensaje",
       submit: "Enviar mensaje",
+      submitting: "Enviando…",
+      nameError: "Introduce tu nombre (mínimo 3 letras).",
+      emailError: "Introduce un correo electrónico válido.",
+      messageError: "Escribe un mensaje de al menos 10 caracteres (máximo 2000).",
+      successTitle: "¡Mensaje enviado!",
+      successMessage: "Gracias por escribirnos. Te responderemos lo antes posible.",
+      errorMessage: "No hemos podido enviar tu mensaje. Por favor, inténtalo de nuevo o llámanos al +34 633 83 20 57.",
     },
   },
   footer: {
@@ -275,6 +282,7 @@ export const es: Dictionary = {
     privacy: "Privacidad",
     terms: "Términos de uso",
     cookies: "Cookies",
+    credit: "Desarrollado por",
   },
   common: {
     languageSwitcherLabel: "Cambiar idioma",

@@ -28,7 +28,7 @@ export function Footer({ locale, dictionary }: FooterProps) {
 
       <div className="mx-auto grid max-w-[1400px] gap-12 border-b border-cream/10 pb-14 md:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
-          <Logo locale={locale} />
+          <Logo locale={locale} height={134} />
           <p className="mt-5 max-w-[30ch] whitespace-pre-line text-sm leading-relaxed text-cream/45">
             {footer.tagline}
           </p>
@@ -93,10 +93,23 @@ export function Footer({ locale, dictionary }: FooterProps) {
 
       <div className="mx-auto flex max-w-[1400px] flex-col-reverse items-center gap-4 pt-6 text-[0.72rem] text-cream/25 md:flex-row md:justify-between">
         <span>© {new Date().getFullYear()} Mannà Restaurant. {footer.rights}</span>
-        <div className="flex gap-6">
-          <span className="cursor-default">{footer.privacy}</span>
-          <span className="cursor-default">{footer.terms}</span>
-          <span className="cursor-default">{footer.cookies}</span>
+        <div className="flex flex-col-reverse items-center gap-4 md:flex-row md:gap-6">
+          <div className="flex gap-6">
+            <span className="cursor-default">{footer.privacy}</span>
+            <span className="cursor-default">{footer.terms}</span>
+            <span className="cursor-default">{footer.cookies}</span>
+          </div>
+          <span>
+            {footer.credit}{" "}
+            <a
+              href="https://www.klentcreative.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline text-cream/45 transition-colors hover:text-cream"
+            >
+              Klent Creative
+            </a>
+          </span>
         </div>
       </div>
     </footer>

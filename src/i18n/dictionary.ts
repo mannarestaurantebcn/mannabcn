@@ -158,6 +158,13 @@ export type Dictionary = {
       email: string;
       message: string;
       submit: string;
+      submitting: string;
+      nameError: string;
+      emailError: string;
+      messageError: string;
+      successTitle: string;
+      successMessage: string;
+      errorMessage: string;
     };
   };
   footer: {
@@ -171,6 +178,7 @@ export type Dictionary = {
     privacy: string;
     terms: string;
     cookies: string;
+    credit: string;
   };
   common: {
     languageSwitcherLabel: string;

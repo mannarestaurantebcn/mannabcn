@@ -97,3 +97,42 @@ export async function sendReservationConfirmationEmail(reservation: ReservationI
     html,
   });
 }
+
+type ContactMessageInput = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+function escapeHtml(value: string) {
+  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/** Forwards a contact form submission to the restaurant's own inbox, with the visitor set as reply-to. */
+export async function sendContactMessage(input: ContactMessageInput) {
+  const transporter = getTransporter();
+  const restaurantEmail = getEnv("GMAIL_USER");
+
+  const html = `
+    <div style="font-family: Arial, sans-serif; color: #2a1006; max-width: 480px; margin: 0 auto;">
+      <h2 style="color: #430C05;">Nuevo mensaje de contacto</h2>
+      <p><strong>Nombre:</strong> ${escapeHtml(input.name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(input.email)}</p>
+      <p><strong>Mensaje:</strong></p>
+      <p style="white-space: pre-wrap;">${escapeHtml(input.message)}</p>
+    </div>
+  `;
+
+  const text = ["Nuevo mensaje de contacto", "", `Nombre: ${input.name}`, `Email: ${input.email}`, "", "Mensaje:", input.message].join(
+    "\n",
+  );
+
+  await transporter.sendMail({
+    from: `Mannà Restaurante <${restaurantEmail}>`,
+    to: restaurantEmail,
+    replyTo: input.email,
+    subject: `Nuevo mensaje de contacto de ${input.name}`,
+    text,
+    html,
+  });
+}

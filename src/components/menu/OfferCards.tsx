@@ -38,7 +38,7 @@ type OfferCardsProps = {
 
 export function OfferCards({ breakfast, menuDelDia }: OfferCardsProps) {
   return (
-    <div className="grid items-start gap-4 lg:grid-cols-2">
+    <div className="grid items-start gap-4 lg:grid-cols-2 lg:items-stretch">
       <Reveal delay={1} className="card-hover border border-gold/40 bg-gold/5 p-6">
         <div className="flex items-baseline justify-between gap-4">
           <h3 className="font-display text-xl italic text-cream">{breakfast.label}</h3>
