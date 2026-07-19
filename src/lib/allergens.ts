@@ -34,6 +34,23 @@ export const allergenLabels: Record<AllergenCode, { es: string; en: string; shor
   molluscs: { es: "Moluscos", en: "Molluscs", short: "MOL" },
 };
 
+export const allergenColors: Record<AllergenCode, string> = {
+  gluten: "#e8722d",
+  crustaceans: "#4299e1",
+  eggs: "#ecc94b",
+  fish: "#2d3748",
+  peanuts: "#b19cd9",
+  soy: "#48bb78",
+  milk: "#f56565",
+  nuts: "#d69e2e",
+  celery: "#38b000",
+  mustard: "#d4a574",
+  sesame: "#c0aa4b",
+  sulphites: "#9f7aea",
+  lupins: "#f687b3",
+  molluscs: "#90cdf4",
+};
+
 const codeBySpanishLabel: Record<string, AllergenCode> = Object.fromEntries(
   ALLERGEN_CODES.map((code) => [allergenLabels[code].es.toLowerCase(), code]),
 );
