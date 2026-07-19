@@ -7,20 +7,20 @@ type AllergenIconProps = {
 };
 
 const fileMap: Record<AllergenCode, string> = {
-  soy: "SOJA.svg",
-  fish: "PESCAD0.svg",
-  mustard: "MOSTAZA.svg",
-  nuts: "FRUTOS DE CÁSCARA.svg",
-  crustaceans: "CRUSTÁCEOS.svg",
-  milk: "LÁCTEOS.svg",
-  sulphites: "DIOXIDO DE AZUFRE Y SULFITOS.svg",
-  molluscs: "MOLUSCOS.svg",
-  celery: "APIO.svg",
-  gluten: "CONTIENE GLUTEN.svg",
-  sesame: "GRANOS DE SÉSAMO.svg",
-  eggs: "HUEVOS.svg",
-  lupins: "ALTRAMUCES.svg",
-  peanuts: "CACAHUETES.svg",
+  soy: "soja.svg",
+  fish: "pescado.svg",
+  mustard: "mostaza.svg",
+  nuts: "frutos-de-cascara.svg",
+  crustaceans: "crustaceos.svg",
+  milk: "lacteos.svg",
+  sulphites: "dioxido-de-azufre-y-sulfitos.svg",
+  molluscs: "moluscos.svg",
+  celery: "apio.svg",
+  gluten: "contiene-gluten.svg",
+  sesame: "granos-de-sesamo.svg",
+  eggs: "huevos.svg",
+  lupins: "altramuces.svg",
+  peanuts: "cacahuetes.svg",
 };
 
 export function AllergenIcon({ code, size = 40 }: AllergenIconProps) {
