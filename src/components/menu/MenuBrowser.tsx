@@ -41,7 +41,7 @@ export function MenuBrowser({ categories, categoryLabels, groupLabels, locale, f
   return (
     <div className="grid gap-8 md:grid-cols-[220px_1fr] md:gap-14">
       {/* Mobile: flat scrollable pill row. Desktop: grouped vertical sidebar. */}
-      <nav aria-label={`${groupLabels.food} / ${groupLabels.drinks}`} className="md:sticky md:top-28 md:self-start">
+      <nav aria-label={`${groupLabels.food} / ${groupLabels.drinks}`} className="min-w-0 md:sticky md:top-28 md:self-start">
         <ul className="flex gap-2 overflow-x-auto pb-2 md:hidden">
           {categories.map((category) => (
             <li key={category.id}>
