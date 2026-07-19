@@ -1,4 +1,5 @@
-import { allergenLabels, allergenColors, type AllergenCode } from "@/lib/allergens";
+import { allergenLabels, type AllergenCode } from "@/lib/allergens";
+import { AllergenIcon } from "./AllergenIcon";
 import type { Locale } from "@/i18n/config";
 
 type AllergenBadgeProps = {
@@ -10,20 +11,14 @@ type AllergenBadgeProps = {
 
 export function AllergenBadge({ code, locale, tone = "light" }: AllergenBadgeProps) {
   const label = allergenLabels[code];
-  const color = allergenColors[code];
-  const textColor = tone === "light" ? "white" : "white";
 
   return (
-    <span
+    <button
+      type="button"
       title={label[locale]}
-      className="inline-flex h-6 min-w-6 items-center justify-center rounded-full text-[0.55rem] font-semibold uppercase tracking-wide transition-transform hover:scale-110"
-      style={{
-        backgroundColor: color,
-        color: textColor,
-        border: "none",
-      }}
+      className="inline-flex items-center justify-center transition-transform hover:scale-110"
     >
-      {label.short}
-    </span>
+      <AllergenIcon code={code} size={28} />
+    </button>
   );
 }
