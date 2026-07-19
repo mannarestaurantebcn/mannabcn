@@ -2,7 +2,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import type { Dictionary } from "@/i18n/dictionary";
 
 function formatPrice(price: number) {
-  return price.toFixed(2).replace(".", ",");
+  return `€ ${price.toFixed(2).replace(".", ",")}`;
 }
 
 function PriceRow({ label, price }: { label: string; price: number }) {

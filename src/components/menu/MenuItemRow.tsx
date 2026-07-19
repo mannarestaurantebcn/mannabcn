@@ -42,7 +42,7 @@ export function MenuItemRow({ item, locale, favoriteLabel, className = "", style
       </div>
       {item.price !== undefined && (
         <span className="font-display shrink-0 text-lg text-charcoal transition-colors duration-200 group-hover:text-gold">
-          {item.price.toFixed(2).replace(".", ",")}
+          € {item.price.toFixed(2).replace(".", ",")}
         </span>
       )}
     </li>
