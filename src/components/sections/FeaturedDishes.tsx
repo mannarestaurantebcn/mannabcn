@@ -30,11 +30,11 @@ export async function FeaturedDishes({ locale, home, placeholderLabel }: Feature
   const delays = [1, 2, 3, 1, 2, 3] as const;
 
   return (
-    <section className="bg-charcoal px-6 py-24 md:px-10 md:py-32">
+    <section className="bg-paper px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-16 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <Reveal>
-            <SectionHeading eyebrow={home.featured.eyebrow} title={home.featured.title} tone="light" />
+            <SectionHeading eyebrow={home.featured.eyebrow} title={home.featured.title} tone="dark" />
           </Reveal>
           <Reveal delay={1}>
             <Button href={path(locale, "menu")} variant="primary">
@@ -46,7 +46,7 @@ export async function FeaturedDishes({ locale, home, placeholderLabel }: Feature
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, index) => (
             <Reveal key={item.number ?? index} delay={delays[index % delays.length]} className="group card-hover">
-              <article className="relative overflow-hidden ring-1 ring-cream/10">
+              <article className="relative overflow-hidden ring-1 ring-charcoal/10">
                 <PlaceholderImage
                   label={placeholderLabel}
                   src={item.number ? dishPhotosByNumber[item.number] : undefined}

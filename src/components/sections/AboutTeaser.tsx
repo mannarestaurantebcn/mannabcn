@@ -40,7 +40,7 @@ export function AboutTeaser({ locale, home, placeholderLabel }: AboutTeaserProps
             </Button>
           </Reveal>
           <Reveal delay={3}>
-            <div className="mt-12 grid grid-cols-2 gap-8 border-t border-line pt-8">
+            <div className="mt-12 grid grid-cols-2 gap-8 border-t border-line-dark pt-8">
               {about.stats.map((stat) => (
                 <div key={stat.label}>
                   <p className="font-display text-4xl font-light text-gold">

@@ -1,24 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  /* Dark, warm palette: maroon base, gold buttons, tan alternating sections. */
-  --color-cream: #f7f2e9; /* light text/foreground on maroon backgrounds */
-  --color-charcoal: #430c05; /* primary dark background; also the dark text color on tan sections */
+  /* Light, natural palette: white base, olive-green accents. Two sections
+     (footer, "Nuestra casa") stay true black on purpose — see AboutTeaser
+     and Footer — so `cream` and `line-dark` remain as light-on-black tokens. */
+  --color-cream: #f7f2e9; /* light text — reserved for the black (noir) sections */
+  --color-charcoal: #000000; /* dark neutral text/accent color, used on light and olive backgrounds */
   --color-charcoal-soft: rgba(247, 242, 233, 0.65); /* muted body copy on maroon backgrounds */
-  --color-maroon-soft: #5c160a; /* lighter maroon for cards/inputs floating on a maroon section */
+  --color-paper: #ffffff; /* primary site background */
+  --color-maroon-soft: #efeae0; /* light card/input surface floating on the white page */
   --color-terracotta: #b5502e; /* secondary accent (hovers, outlines) */
   --color-terracotta-dark: #96401f;
-  --color-gold: #ffbf66; /* buttons + primary accents */
-  --color-gold-dark: #e0a64d; /* button hover shade */
-  --color-sand: #e3cd8b; /* alternating section background (tan) */
+  --color-gold: #6b7c3c; /* olive green — buttons + primary accents */
+  --color-gold-dark: #54622e; /* olive hover shade */
+  --color-sand: #e3cd8b; /* alternating section background (tan) — currently unused */
   --color-noir: #000000; /* true black — "Nuestra casa" section, footer */
-  --color-line: rgba(247, 242, 233, 0.14); /* hairlines on dark backgrounds */
-  --color-line-dark: rgba(67, 12, 5, 0.18); /* hairlines on tan backgrounds */
+  --color-line: rgba(67, 12, 5, 0.1); /* hairlines on the white page */
+  --color-line-dark: rgba(247, 242, 233, 0.14); /* hairlines on the black sections */
 }
 
 @theme inline {
   --color-cream: var(--color-cream);
   --color-charcoal: var(--color-charcoal);
+  --color-paper: var(--color-paper);
   --color-maroon-soft: var(--color-maroon-soft);
   --color-terracotta: var(--color-terracotta);
   --color-terracotta-dark: var(--color-terracotta-dark);
@@ -38,14 +42,14 @@ html {
 }
 
 body {
-  background: var(--color-charcoal);
-  color: var(--color-cream);
+  background: var(--color-paper);
+  color: var(--color-charcoal);
   font-family: var(--font-sans);
 }
 
 ::selection {
   background: var(--color-gold);
-  color: var(--color-charcoal);
+  color: var(--color-paper);
 }
 
 /* ----------------------------------------------------------------
@@ -146,7 +150,7 @@ body {
   box-shadow: 0 24px 48px -28px rgba(34, 29, 24, 0.35);
 }
 
-/* Card lift on hover (dark backgrounds — glow instead of shadow) */
+/* Card lift on hover (used on white cards — olive tint instead of shadow) */
 .card-hover-dark {
   transition:
     transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -154,7 +158,7 @@ body {
 }
 .card-hover-dark:hover {
   transform: translateY(-6px);
-  background-color: rgba(247, 242, 233, 0.04);
+  background-color: rgba(107, 124, 60, 0.12);
 }
 
 /* ----------------------------------------------------------------

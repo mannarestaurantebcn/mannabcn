@@ -294,4 +294,10 @@ export const en: Dictionary = {
     mapBlocked: "This map uses cookies from Google. Accept cookies to view it.",
     mapLoad: "Load map",
   },
+  notFound: {
+    eyebrow: "404 error",
+    title: "This page\ndoesn't exist.",
+    message: "The link may be broken, or the page may have moved. Head back home to keep exploring Mannà.",
+    cta: "Back to home",
+  },
 };

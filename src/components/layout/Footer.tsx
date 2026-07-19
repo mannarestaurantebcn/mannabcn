@@ -32,7 +32,7 @@ export function Footer({ locale, dictionary }: FooterProps) {
 
   return (
     <footer className="bg-noir px-6 pb-8 pt-16 text-cream md:px-10 md:pt-20">
-      <WaveDivider className="mx-auto mb-14 h-3 w-24" color="#ffbf66" animated />
+      <WaveDivider className="mx-auto mb-14 h-3 w-24" color="#6b7c3c" animated />
 
       <div className="mx-auto grid max-w-[1400px] gap-12 border-b border-cream/10 pb-14 md:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>

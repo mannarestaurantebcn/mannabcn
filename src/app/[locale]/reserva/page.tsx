@@ -40,7 +40,7 @@ export default async function ReservationPage({ params }: { params: Promise<Page
             eyebrow={reservation.eyebrow}
             title={reservation.title}
             subtitle={reservation.subtitle}
-            tone="light"
+            tone="dark"
           />
         </Reveal>
         <Reveal delay={1}>

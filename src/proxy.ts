@@ -13,6 +13,10 @@ export function proxy(request: NextRequest) {
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
+    // Root-level metadata routes (e.g. apple-icon) are served without a file
+    // extension in their URL, so they'd otherwise get caught by the locale
+    // redirect below.
+    pathname === "/apple-icon" ||
     pathname.includes(".")
   ) {
     return NextResponse.next();

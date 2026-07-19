@@ -189,4 +189,10 @@ export type Dictionary = {
     mapBlocked: string;
     mapLoad: string;
   };
+  notFound: {
+    eyebrow: string;
+    title: string;
+    message: string;
+    cta: string;
+  };
 };

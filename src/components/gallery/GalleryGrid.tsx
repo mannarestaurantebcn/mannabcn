@@ -56,8 +56,8 @@ export function GalleryGrid({ categories, placeholderLabel }: GalleryGridProps) 
               onClick={() => setFilter(entry.key)}
               className={`rounded-full border px-5 py-2 text-[0.68rem] font-medium uppercase tracking-[0.14em] transition-all duration-300 active:scale-95 ${
                 active
-                  ? "border-gold bg-gold text-charcoal"
-                  : "border-cream/20 text-cream/60 hover:border-cream/40 hover:-translate-y-0.5"
+                  ? "border-gold bg-gold text-cream"
+                  : "border-charcoal/20 text-charcoal/60 hover:border-charcoal/40 hover:-translate-y-0.5"
               }`}
             >
               {entry.label}

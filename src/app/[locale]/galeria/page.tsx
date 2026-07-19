@@ -40,7 +40,7 @@ export default async function GalleryPage({ params }: { params: Promise<PagePara
             eyebrow={gallery.eyebrow}
             title={gallery.title}
             subtitle={gallery.subtitle}
-            tone="light"
+            tone="dark"
           />
         </Reveal>
         <GalleryGrid categories={gallery.categories} placeholderLabel={common.placeholderPhotoLabel} />

@@ -20,11 +20,11 @@ export function MapEmbed({ query, title, className = "", blockedMessage, loadLab
       <div
         className={`flex flex-col items-center justify-center gap-4 border border-line bg-maroon-soft/40 p-8 text-center ${className}`}
       >
-        <p className="max-w-[42ch] text-sm text-cream/60">{blockedMessage}</p>
+        <p className="max-w-[42ch] text-sm text-charcoal/60">{blockedMessage}</p>
         <button
           type="button"
           onClick={() => setCookieConsent("accepted")}
-          className="border border-gold px-5 py-2.5 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-gold transition-colors hover:bg-gold hover:text-charcoal"
+          className="border border-gold px-5 py-2.5 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-gold transition-colors hover:bg-gold hover:text-cream"
         >
           {loadLabel}
         </button>

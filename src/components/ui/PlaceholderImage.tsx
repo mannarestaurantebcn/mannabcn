@@ -33,7 +33,7 @@ export function PlaceholderImage({ label, className = "", style, src }: Placehol
   return (
     <div
       style={style}
-      className={`media-zoom relative flex items-center justify-center bg-gradient-to-br from-maroon-soft via-charcoal to-charcoal text-cream/30 ${className}`}
+      className={`media-zoom relative flex items-center justify-center bg-gradient-to-br from-charcoal via-charcoal to-noir text-cream/30 ${className}`}
     >
       <div className="media-zoom-inner flex flex-col items-center gap-3">
         <svg

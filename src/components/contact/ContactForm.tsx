@@ -9,8 +9,8 @@ type ContactFormProps = {
 };
 
 const inputClass =
-  "w-full border border-line bg-maroon-soft/40 px-4 py-3 text-sm text-cream placeholder:text-cream/35 transition-colors duration-300 focus:border-gold focus:outline-none";
-const labelClass = "mb-2 block text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-cream/55";
+  "w-full border border-charcoal/60 bg-maroon-soft/40 px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/35 transition-colors duration-300 focus:border-gold focus:outline-none";
+const labelClass = "mb-2 block text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-charcoal/55";
 
 type Status = "idle" | "submitting" | "success" | "error";
 type FormControl = HTMLInputElement | HTMLTextAreaElement;
@@ -91,8 +91,8 @@ export function ContactForm({ form }: ContactFormProps) {
   if (status === "success") {
     return (
       <div role="status" aria-live="polite" className="border border-gold/40 bg-gold/5 p-8 text-center">
-        <h3 className="font-display text-xl italic text-cream">{form.successTitle}</h3>
-        <p className="mt-3 text-sm text-cream/70">{form.successMessage}</p>
+        <h3 className="font-display text-xl italic text-charcoal">{form.successTitle}</h3>
+        <p className="mt-3 text-sm text-charcoal/70">{form.successMessage}</p>
       </div>
     );
   }

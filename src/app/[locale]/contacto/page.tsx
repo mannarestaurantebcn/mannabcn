@@ -37,41 +37,41 @@ export default async function ContactPage({ params }: { params: Promise<PagePara
     <SubpageShell>
       <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-10 md:py-24">
         <Reveal className="mb-16">
-          <SectionHeading eyebrow={contact.eyebrow} title={contact.title} tone="light" />
+          <SectionHeading eyebrow={contact.eyebrow} title={contact.title} tone="dark" />
         </Reveal>
 
         <div className="grid items-start gap-12 md:grid-cols-2">
           <Reveal delay={1} className="space-y-10">
-            <p className="max-w-[42ch] text-[0.95rem] leading-relaxed text-cream/60">{contact.subtitle}</p>
+            <p className="max-w-[42ch] text-[0.95rem] leading-relaxed text-charcoal/60">{contact.subtitle}</p>
 
             <div>
-              <h3 className="mb-4 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-cream/45">
+              <h3 className="mb-4 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-charcoal/45">
                 {contact.infoTitle}
               </h3>
-              <p className="text-[0.95rem] text-cream/70">{contact.address}</p>
+              <p className="text-[0.95rem] text-charcoal/70">{contact.address}</p>
               <a
                 href={`tel:${contact.phone.replace(/\s/g, "")}`}
-                className="mt-2 block text-[0.95rem] text-cream/70 hover:text-gold"
+                className="mt-2 block text-[0.95rem] text-charcoal/70 hover:text-gold"
               >
                 {contact.phone}
               </a>
               <a
                 href={`mailto:${contact.email}`}
-                className="mt-1 block text-[0.95rem] text-cream/70 hover:text-gold"
+                className="mt-1 block text-[0.95rem] text-charcoal/70 hover:text-gold"
               >
                 {contact.email}
               </a>
             </div>
 
             <div>
-              <h3 className="mb-4 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-cream/45">
+              <h3 className="mb-4 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-charcoal/45">
                 {contact.hoursTitle}
               </h3>
               <ul>
                 {contact.hours.map((entry) => (
                   <li
                     key={entry.days}
-                    className="flex justify-between gap-4 border-b border-line py-2 text-[0.9rem] text-cream/65"
+                    className="flex justify-between gap-4 border-b border-line py-2 text-[0.9rem] text-charcoal/65"
                   >
                     <span>{entry.days}</span>
                     <span>{entry.hours}</span>

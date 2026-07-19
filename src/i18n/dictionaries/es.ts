@@ -294,4 +294,10 @@ export const es: Dictionary = {
     mapBlocked: "Este mapa usa cookies de Google. Acepta las cookies para poder verlo.",
     mapLoad: "Cargar mapa",
   },
+  notFound: {
+    eyebrow: "Error 404",
+    title: "Esta página\nno existe.",
+    message: "Puede que el enlace esté roto o que la página se haya movido. Vuelve al inicio para seguir explorando Mannà.",
+    cta: "Volver al inicio",
+  },
 };

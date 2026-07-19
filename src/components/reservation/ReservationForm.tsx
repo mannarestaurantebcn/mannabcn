@@ -12,10 +12,10 @@ type ReservationFormProps = {
 };
 
 const inputClass =
-  "w-full border border-line bg-maroon-soft/40 px-4 py-3 text-sm text-cream placeholder:text-cream/35 transition-colors duration-300 [color-scheme:dark] focus:border-gold focus:outline-none";
-const labelClass = "mb-2 block text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-cream/55";
+  "w-full border border-charcoal/60 bg-maroon-soft/40 px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/35 transition-colors duration-300 [color-scheme:light] focus:border-gold focus:outline-none";
+const labelClass = "mb-2 block text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-charcoal/55";
 // Native <option> popups don't render translucent backgrounds reliably, so they need a solid color.
-const optionStyle = { backgroundColor: "#5c160a", color: "#f7f2e9" };
+const optionStyle = { backgroundColor: "#efeae0", color: "#430c05" };
 
 type Status = "idle" | "submitting" | "success" | "error" | "unavailable";
 
@@ -132,9 +132,9 @@ export function ReservationForm({ form, locale }: ReservationFormProps) {
   if (status === "success") {
     return (
       <div role="status" aria-live="polite" className="border border-gold/40 bg-gold/5 p-8 text-center">
-        <h3 className="font-display text-xl italic text-cream">{form.successTitle}</h3>
-        <p className="mt-3 text-sm text-cream/70">{form.successMessage}</p>
-        <p className="mt-2 text-[0.78rem] text-cream/45">{form.successSpamNote}</p>
+        <h3 className="font-display text-xl italic text-charcoal">{form.successTitle}</h3>
+        <p className="mt-3 text-sm text-charcoal/70">{form.successMessage}</p>
+        <p className="mt-2 text-[0.78rem] text-charcoal/45">{form.successSpamNote}</p>
       </div>
     );
   }
@@ -269,7 +269,7 @@ export function ReservationForm({ form, locale }: ReservationFormProps) {
         <Button type="submit" variant="primary" disabled={status === "submitting" || !isValid}>
           {status === "submitting" ? form.submitting : form.submit}
         </Button>
-        <p className="mt-4 text-[0.78rem] text-cream/45">{form.disclaimer}</p>
+        <p className="mt-4 text-[0.78rem] text-charcoal/45">{form.disclaimer}</p>
         <div role="status" aria-live="polite">
           {status === "error" && <p className="mt-2 text-[0.78rem] text-terracotta">{form.errorMessage}</p>}
           {status === "unavailable" && <p className="mt-2 text-[0.78rem] text-terracotta">{form.unavailableMessage}</p>}

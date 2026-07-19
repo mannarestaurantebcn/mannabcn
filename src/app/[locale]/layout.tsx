@@ -91,7 +91,7 @@ export default async function LocaleLayout({
         <RestaurantJsonLd locale={locale} />
         <a
           href="#main-content"
-          className="fixed left-4 top-4 z-[100] -translate-y-20 bg-gold px-4 py-2 text-sm font-medium text-charcoal transition-transform focus:translate-y-0"
+          className="fixed left-4 top-4 z-[100] -translate-y-20 bg-gold px-4 py-2 text-sm font-medium text-cream transition-transform focus:translate-y-0"
         >
           {locale === "es" ? "Saltar al contenido" : "Skip to content"}
         </a>

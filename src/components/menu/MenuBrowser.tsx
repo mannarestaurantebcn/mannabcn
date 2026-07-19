@@ -17,7 +17,7 @@ function navButtonClass(active: boolean) {
   return `block w-full whitespace-nowrap border-l-2 px-4 py-2 text-left text-[0.8rem] transition-all duration-200 active:scale-95 ${
     active
       ? "border-gold text-gold translate-x-1"
-      : "border-transparent text-cream/55 hover:translate-x-1 hover:border-cream/25 hover:text-cream"
+      : "border-transparent text-charcoal hover:translate-x-1 hover:border-charcoal/25"
   }`;
 }
 
@@ -50,8 +50,8 @@ export function MenuBrowser({ categories, categoryLabels, groupLabels, locale, f
                 onClick={() => setActiveId(category.id)}
                 className={`rounded-full border px-4 py-2 text-[0.72rem] font-medium uppercase tracking-[0.1em] transition-all duration-200 active:scale-90 ${
                   category.id === activeId
-                    ? "border-gold bg-gold text-charcoal"
-                    : "border-cream/20 text-cream/60 hover:-translate-y-0.5 hover:border-cream/40"
+                    ? "border-gold bg-gold text-cream"
+                    : "border-charcoal/20 text-charcoal/60 hover:-translate-y-0.5 hover:border-charcoal/40"
                 }`}
               >
                 {categoryLabels[category.id]}
@@ -61,7 +61,7 @@ export function MenuBrowser({ categories, categoryLabels, groupLabels, locale, f
         </ul>
 
         <div className="hidden md:block">
-          <h3 className="mb-3 text-[0.62rem] font-semibold uppercase tracking-[0.25em] text-cream/35">
+          <h3 className="mb-3 text-[0.62rem] font-semibold uppercase tracking-[0.25em] text-charcoal/35">
             {groupLabels.food}
           </h3>
           <ul className="mb-8 space-y-1">
@@ -74,7 +74,7 @@ export function MenuBrowser({ categories, categoryLabels, groupLabels, locale, f
             ))}
           </ul>
 
-          <h3 className="mb-3 text-[0.62rem] font-semibold uppercase tracking-[0.25em] text-cream/35">
+          <h3 className="mb-3 text-[0.62rem] font-semibold uppercase tracking-[0.25em] text-charcoal/35">
             {groupLabels.drinks}
           </h3>
           <ul className="space-y-1">
@@ -90,7 +90,7 @@ export function MenuBrowser({ categories, categoryLabels, groupLabels, locale, f
       </nav>
 
       <div ref={contentRef} key={activeCategory.id} style={{ scrollMarginTop: 96 }} className="animate-fade-up">
-        <h2 className="font-display mb-6 text-2xl italic text-cream md:text-3xl">
+        <h2 className="font-display mb-6 text-2xl italic text-charcoal md:text-3xl">
           {categoryLabels[activeCategory.id]}
         </h2>
         <ul>

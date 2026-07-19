@@ -21,7 +21,7 @@ export function GalleryTeaser({ locale, home, placeholderLabel }: GalleryTeaserP
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-12 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <Reveal>
-            <SectionHeading eyebrow={home.galleryTeaser.eyebrow} title={home.galleryTeaser.title} tone="light" />
+            <SectionHeading eyebrow={home.galleryTeaser.eyebrow} title={home.galleryTeaser.title} tone="dark" />
           </Reveal>
           <Reveal delay={1}>
             <Button href={path(locale, "gallery")} variant="outline">
@@ -35,7 +35,7 @@ export function GalleryTeaser({ locale, home, placeholderLabel }: GalleryTeaserP
               <PlaceholderImage
                 label={placeholderLabel}
                 src={stockPhotos.galleryTeaser[index]}
-                className="h-[220px] w-full grayscale md:h-[280px]"
+                className="h-[220px] w-full md:h-[280px]"
               />
             </Reveal>
           ))}

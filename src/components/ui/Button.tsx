@@ -25,11 +25,13 @@ type ButtonAsButton = CommonProps & {
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: "bg-gold text-charcoal border border-gold hover:bg-gold-dark hover:border-gold-dark",
-  outline: "bg-transparent text-cream border border-cream/30 hover:border-cream",
+  primary: "bg-gold text-cream border border-gold hover:bg-gold-dark hover:border-gold-dark",
+  // Used on the white page background (e.g. the gallery teaser CTA).
+  outline: "bg-transparent text-charcoal border border-charcoal/30 hover:border-charcoal",
+  // Used only where a button floats over a dark photo (e.g. the hero).
   ghost: "bg-transparent text-cream border border-cream/40 hover:border-cream",
-  // Dark button for the rare case of sitting on a bright gold surface (e.g. the reservation band).
-  dark: "bg-charcoal text-cream border border-charcoal hover:bg-maroon-soft hover:border-maroon-soft",
+  // Dark button for the rare case of sitting on a bright olive surface (e.g. the reservation band).
+  dark: "bg-charcoal text-cream border border-charcoal hover:bg-noir hover:border-noir",
 };
 
 const base =

@@ -34,6 +34,8 @@ export function Nav({ locale, nav, languageSwitcherLabel }: NavProps) {
   const isTransparent = isHomePage && !scrolled && !mobileOpen;
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const switchedPath = pathname.replace(`/${locale}`, `/${otherLocale}`) || `/${otherLocale}`;
+  // Both the transparent (over the hero photo) and solid (black bar) states use light text.
+  const linkTextClass = "text-cream/75 transition-colors hover:text-cream";
 
   const links = [
     { href: path(locale, "home"), label: nav.home },
@@ -48,7 +50,7 @@ export function Nav({ locale, nav, languageSwitcherLabel }: NavProps) {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         isTransparent
           ? "bg-transparent"
-          : "border-b border-line bg-charcoal/95 shadow-[0_1px_20px_-8px_rgba(0,0,0,0.35)] backdrop-blur-sm"
+          : "border-b border-line-dark bg-noir/95 shadow-[0_1px_20px_-8px_rgba(0,0,0,0.35)] backdrop-blur-sm"
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 md:px-10">
@@ -60,7 +62,7 @@ export function Nav({ locale, nav, languageSwitcherLabel }: NavProps) {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="link-underline text-[0.7rem] font-medium uppercase tracking-[0.16em] text-cream/75 transition-colors hover:text-cream"
+                  className={`link-underline text-[0.7rem] font-medium uppercase tracking-[0.16em] ${linkTextClass}`}
                 >
                   {link.label}
                 </Link>
@@ -74,7 +76,7 @@ export function Nav({ locale, nav, languageSwitcherLabel }: NavProps) {
             href={switchedPath}
             hrefLang={otherLocale}
             aria-label={languageSwitcherLabel}
-            className="link-underline text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-cream/70 transition-colors hover:text-cream"
+            className={`link-underline text-[0.65rem] font-semibold uppercase tracking-[0.16em] ${linkTextClass}`}
           >
             {otherLocale.toUpperCase()}
           </Link>
@@ -108,7 +110,7 @@ export function Nav({ locale, nav, languageSwitcherLabel }: NavProps) {
       {mobileOpen && (
         <div
           id="mobile-nav-panel"
-          className="animate-mobile-panel-in border-t border-line bg-charcoal px-6 py-6 md:hidden"
+          className="animate-mobile-panel-in border-t border-line-dark bg-noir px-6 py-6 md:hidden"
         >
           <ul className="flex flex-col gap-5">
             {links.map((link, index) => (

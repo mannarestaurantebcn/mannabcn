@@ -24,10 +24,10 @@ export function EditorialSplit({
       <Reveal
         className={`flex flex-col justify-center px-6 py-20 md:px-16 md:py-16 ${reverse ? "md:order-2" : ""}`}
       >
-        <SectionHeading eyebrow={eyebrow} title={title} tone="light" />
+        <SectionHeading eyebrow={eyebrow} title={title} tone="dark" />
         <div className="mt-6 space-y-4">
           {paragraphs.map((paragraph) => (
-            <p key={paragraph} className="max-w-[46ch] text-[0.95rem] leading-relaxed text-cream/65">
+            <p key={paragraph} className="max-w-[46ch] text-[0.95rem] leading-relaxed text-charcoal/65">
               {paragraph}
             </p>
           ))}

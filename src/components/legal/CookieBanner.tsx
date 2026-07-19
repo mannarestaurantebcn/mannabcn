@@ -75,7 +75,7 @@ export function CookieBanner({ locale, message, policyLinkLabel, accept, reject 
           <button
             type="button"
             onClick={() => setCookieConsent("accepted")}
-            className="bg-gold px-5 py-2.5 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-charcoal transition-colors hover:bg-gold-dark"
+            className="bg-gold px-5 py-2.5 text-[0.7rem] font-medium uppercase tracking-[0.16em] text-cream transition-colors hover:bg-gold-dark"
           >
             {accept}
           </button>

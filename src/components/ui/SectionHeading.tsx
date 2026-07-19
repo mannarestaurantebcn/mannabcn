@@ -3,7 +3,8 @@ type SectionHeadingProps = {
   title: string;
   subtitle?: string;
   align?: "left" | "center";
-  tone?: "dark" | "light";
+  /** "dark" = black text on white; "light" = cream text on black; "olive" = white text on the olive band. */
+  tone?: "dark" | "light" | "olive";
   className?: string;
 };
 
@@ -17,9 +18,9 @@ export function SectionHeading({
   className = "",
 }: SectionHeadingProps) {
   const alignClass = align === "center" ? "mx-auto items-center text-center" : "items-start text-left";
-  const titleColor = tone === "light" ? "text-cream" : "text-charcoal";
-  const subtitleColor = tone === "light" ? "text-cream/60" : "text-charcoal/60";
-  const eyebrowColor = tone === "light" ? "text-gold" : "text-terracotta";
+  const titleColor = tone === "dark" ? "text-charcoal" : "text-cream";
+  const subtitleColor = tone === "dark" ? "text-charcoal/60" : "text-cream/60";
+  const eyebrowColor = tone === "dark" ? "text-charcoal" : tone === "olive" ? "text-cream" : "text-gold";
 
   return (
     <div className={`flex flex-col ${alignClass} ${className}`}>

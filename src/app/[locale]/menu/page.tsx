@@ -48,7 +48,7 @@ export default async function MenuPage({ params }: { params: Promise<PageParams>
     <SubpageShell>
       <div className="mx-auto max-w-[1400px] px-6 pb-16 pt-16 md:px-10 md:pt-20">
         <Reveal>
-          <SectionHeading eyebrow={menu.eyebrow} title={menu.title} subtitle={menu.subtitle} tone="light" />
+          <SectionHeading eyebrow={menu.eyebrow} title={menu.title} subtitle={menu.subtitle} tone="dark" />
         </Reveal>
 
         <Reveal delay={1} className="mt-10">
@@ -59,7 +59,7 @@ export default async function MenuPage({ params }: { params: Promise<PageParams>
           delay={2}
           className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6"
         >
-          <p className="max-w-[52ch] text-[0.8rem] text-cream/50">{menu.priceHiddenNote}</p>
+          <p className="max-w-[52ch] text-[0.8rem] text-charcoal/50">{menu.priceHiddenNote}</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <a
               href="/documents/carta-manna.pdf"
@@ -92,7 +92,7 @@ export default async function MenuPage({ params }: { params: Promise<PageParams>
 
         <div className="mb-20 mt-16">
           <AllergenLegend locale={locale} title={menu.allergenLegendTitle} />
-          <p className="mt-6 text-[0.8rem] text-cream/50">{menu.allergenNote}</p>
+          <p className="mt-6 text-[0.8rem] text-charcoal/50">{menu.allergenNote}</p>
         </div>
       </div>
     </SubpageShell>

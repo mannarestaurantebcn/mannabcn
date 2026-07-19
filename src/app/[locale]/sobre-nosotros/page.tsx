@@ -44,7 +44,7 @@ export default async function AboutPage({ params }: { params: Promise<PageParams
         placeholderLabel={common.placeholderPhotoLabel}
         imageSrc={stockPhotos.editorialSplit}
       />
-      <WaveDivider className="mx-auto my-4 h-3 w-24" color="#ffbf66" animated />
+      <WaveDivider className="mx-auto my-4 h-3 w-24" color="#6b7c3c" animated />
       <ValuesGrid
         eyebrow={about.values.eyebrow}
         title={about.values.title}

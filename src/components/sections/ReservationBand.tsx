@@ -21,7 +21,7 @@ export function ReservationBand({ locale, home }: ReservationBandProps) {
           title={reservationBand.title}
           subtitle={reservationBand.subtitle}
           align="center"
-          tone="dark"
+          tone="olive"
         />
         <Button href={path(locale, "reservation")} variant="dark" className="mt-10">
           {reservationBand.cta}
