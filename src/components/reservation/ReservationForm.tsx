@@ -146,7 +146,7 @@ export function ReservationForm({ form, locale }: ReservationFormProps) {
       onInput={handleFormInput}
       onBlur={handleFieldBlur}
       noValidate
-      className="grid gap-6 sm:grid-cols-2"
+      className="min-w-0 grid gap-6 sm:grid-cols-2"
     >
       {/* Honeypot: hidden from real users, but bots that fill every field will trip it. */}
       <div aria-hidden="true" style={{ position: "absolute", left: -9999 }}>
