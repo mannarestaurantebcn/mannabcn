@@ -48,7 +48,7 @@ const HOLIDAYS_BARCELONA = new Set<string>([
   "2027-12-25", // Navidad
 ]);
 
-const SLOT_STEP_MINUTES = 30;
+const SLOT_STEP_MINUTES = 15;
 /** Leave at least this long before closing so a 2h sitting can be honoured. */
 const LAST_SLOT_BUFFER_MINUTES = 60;
 
