@@ -175,6 +175,25 @@ body {
 }
 
 /* ----------------------------------------------------------------
+   Fade-out right edge indicator for scrollable content
+---------------------------------------------------------------- */
+.scroll-fade-right::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40px;
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+}
+@media (min-width: 768px) {
+  .scroll-fade-right::after {
+    display: none;
+  }
+}
+
+/* ----------------------------------------------------------------
    Animated underline for text links
 ---------------------------------------------------------------- */
 .link-underline {
