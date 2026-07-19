@@ -35,7 +35,7 @@ export function MenuItemRow({ item, locale, favoriteLabel, className = "", style
         {item.allergens && item.allergens.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-1.5">
             {item.allergens.map((code) => (
-              <AllergenBadge key={code} code={code} locale={locale} tone="dark" />
+              <AllergenBadge key={code} code={code} locale={locale} />
             ))}
           </div>
         )}
