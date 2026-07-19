@@ -3,8 +3,8 @@ import { google, type calendar_v3 } from "googleapis";
 const TIME_ZONE = "Europe/Madrid";
 const RESERVATION_DURATION_HOURS = 2;
 
-/** Total guests the restaurant can seat at once for online bookings. Temporary default — confirm the real number with the client. */
-const MAX_GUESTS_PER_SLOT = Number(process.env.RESERVATION_MAX_GUESTS_PER_SLOT) || 30;
+/** Total guests the restaurant can seat at once for online bookings. */
+const MAX_GUESTS_PER_SLOT = Number(process.env.RESERVATION_MAX_GUESTS_PER_SLOT) || 40;
 
 /** Marks an event as created by the website's own reservation form, as opposed to one the client added manually (phone booking, private event…). */
 const WEBSITE_SOURCE_TAG = "website";
