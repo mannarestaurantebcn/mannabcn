@@ -43,7 +43,12 @@ export async function generateMetadata({
   return {
     // TODO: replace with the real domain once it's registered (e.g. via NEXT_PUBLIC_SITE_URL),
     // so absolute OG/Twitter image URLs resolve correctly instead of falling back to localhost.
-    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+    metadataBase: new URL(
+      (() => {
+        const url = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+        return url.startsWith("http") ? url : `https://${url}`;
+      })()
+    ),
     title: {
       default: title,
       template: `%s — ${dict.meta.siteName}`,

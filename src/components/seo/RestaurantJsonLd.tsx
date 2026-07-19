@@ -1,7 +1,11 @@
 import type { Locale } from "@/i18n/config";
 import { path } from "@/lib/routes";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const getSiteUrl = () => {
+  const url = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  return url.startsWith("http") ? url : `https://${url}`;
+};
+const BASE_URL = getSiteUrl();
 
 /** Renders Restaurant structured data (schema.org) so Google can show hours,
  * address and cuisine directly in search results. */
