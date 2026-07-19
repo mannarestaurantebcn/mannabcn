@@ -39,7 +39,7 @@ function parseReservationInput(
   }
 
   const guestsNumber = typeof guests === "number" ? guests : Number(guests);
-  if (!Number.isInteger(guestsNumber) || guestsNumber < 1 || guestsNumber > 20) {
+  if (!Number.isInteger(guestsNumber) || guestsNumber < 1 || guestsNumber > 40) {
     return { ok: false, error: "invalid_guests" };
   }
 
