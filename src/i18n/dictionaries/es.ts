@@ -253,7 +253,7 @@ export const es: Dictionary = {
     hoursTitle: "Horario",
     hours: [
       { days: "Lunes a viernes", hours: "7:00 – 22:00" },
-      { days: "Sábados y festivos", hours: "9:30 – 21:00" },
+      { days: "Sábados y festivos", hours: "9:30 – 22:00" },
       { days: "Domingos", hours: "12:00 – 17:00" },
     ],
     mapPlaceholder: "Mapa de Mannà",
