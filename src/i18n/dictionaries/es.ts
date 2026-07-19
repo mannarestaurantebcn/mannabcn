@@ -216,7 +216,7 @@ export const es: Dictionary = {
       nameError: "Introduce tu nombre (mínimo 3 letras).",
       emailError: "Introduce un correo electrónico válido.",
       phoneError: "Introduce un teléfono válido (solo números).",
-      guestsError: "Introduce un número de personas entre 1 y 20.",
+      guestsError: "Introduce un número de personas entre 1 y 40.",
       dateError: "Selecciona una fecha válida.",
       timeError: "Selecciona una hora.",
       submit: "Solicitar reserva",
