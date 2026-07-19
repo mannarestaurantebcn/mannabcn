@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
+import { Analytics } from "@vercel/analytics/react";
 import { locales, isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { Nav } from "@/components/layout/Nav";
@@ -112,6 +113,7 @@ export default async function LocaleLayout({
           accept={dictionary.cookieBanner.accept}
           reject={dictionary.cookieBanner.reject}
         />
+        <Analytics />
       </body>
     </html>
   );
