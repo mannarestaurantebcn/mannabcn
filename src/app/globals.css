@@ -235,3 +235,28 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ----------------------------------------------------------------
+   High contrast mode support
+---------------------------------------------------------------- */
+@media (prefers-contrast: more) {
+  :root {
+    --color-line: rgba(0, 0, 0, 0.2);
+    --color-line-dark: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* ----------------------------------------------------------------
+   Focus visible styling for form inputs and interactive elements
+---------------------------------------------------------------- */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}

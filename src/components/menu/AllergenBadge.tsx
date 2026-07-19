@@ -5,11 +5,9 @@ import type { Locale } from "@/i18n/config";
 type AllergenBadgeProps = {
   code: AllergenCode;
   locale: Locale;
-  /** "light" (default) for badges floating over a dark photo; "dark" for badges sitting directly on the white page. */
-  tone?: "light" | "dark";
 };
 
-export function AllergenBadge({ code, locale, tone = "light" }: AllergenBadgeProps) {
+export function AllergenBadge({ code, locale }: AllergenBadgeProps) {
   const label = allergenLabels[code];
 
   return (

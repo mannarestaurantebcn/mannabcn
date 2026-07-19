@@ -91,6 +91,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
       className={`${fraunces.variable} ${inter.variable} h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
