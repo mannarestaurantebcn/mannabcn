@@ -13,7 +13,6 @@
   --color-terracotta-dark: #96401f;
   --color-gold: #6b7c3c; /* olive green — buttons + primary accents */
   --color-gold-dark: #54622e; /* olive hover shade */
-  --color-sand: #e3cd8b; /* alternating section background (tan) — currently unused */
   --color-noir: #000000; /* true black — "Nuestra casa" section, footer */
   --color-line: rgba(67, 12, 5, 0.1); /* hairlines on the white page */
   --color-line-dark: rgba(247, 242, 233, 0.14); /* hairlines on the black sections */
@@ -28,7 +27,6 @@
   --color-terracotta-dark: var(--color-terracotta-dark);
   --color-gold: var(--color-gold);
   --color-gold-dark: var(--color-gold-dark);
-  --color-sand: var(--color-sand);
   --color-noir: var(--color-noir);
   --color-line: var(--color-line);
   --color-line-dark: var(--color-line-dark);

@@ -3,9 +3,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { AllergenBadge } from "@/components/menu/AllergenBadge";
-import { getFeaturedItems } from "@/lib/menu-data";
+import { getMenuCategories } from "@/lib/menu-data";
 import { path } from "@/lib/routes";
-import { stockPhotos } from "@/lib/stock-photos";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionary";
 
@@ -17,16 +16,22 @@ type FeaturedDishesProps = {
 
 // Keyed by the dish's printed menu number (see lib/menu-data.ts).
 const dishPhotosByNumber: Record<number, string> = {
-  3: stockPhotos.dishes.ensaladaCesar,
-  6: stockPhotos.dishes.jamonIberico,
-  10: stockPhotos.dishes.panConTomate,
-  17: stockPhotos.dishes.patatasBravas,
-  19: stockPhotos.dishes.croquetas,
-  28: stockPhotos.dishes.pimientosPadron,
+  91: "/imagenes/plato7.jpg",
+  94: "/imagenes/plato23.jpg",
+  22: "/imagenes/plato13.jpg",
+  34: "/imagenes/plato8.jpg",
+  35: "/imagenes/plato18.jpg",
+  40: "/imagenes/plato22.jpg",
 };
 
 export async function FeaturedDishes({ locale, home, placeholderLabel }: FeaturedDishesProps) {
-  const items = await getFeaturedItems(6);
+  const categories = await getMenuCategories();
+  const allItems = categories.flatMap(cat => cat.items);
+  const featuredNumbers = [91, 94, 22, 34, 35, 40];
+  const items = featuredNumbers
+    .map(num => allItems.find(item => item.number === num))
+    .filter((item) => item !== undefined)
+    .slice(0, 6);
   const delays = [1, 2, 3, 1, 2, 3] as const;
 
   return (

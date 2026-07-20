@@ -2,27 +2,46 @@
 
 import { useState } from "react";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
-import { stockPhotos } from "@/lib/stock-photos";
 import type { Dictionary } from "@/i18n/dictionary";
 
 type GalleryCategory = "dishes" | "interior" | "exterior";
 type GalleryFilter = "all" | GalleryCategory;
 type GalleryItem = { id: string; category: GalleryCategory; src: string };
 
-// Mock gallery — swap each `src` for a real photo once the shoot is delivered.
 const items: GalleryItem[] = [
-  { id: "1", category: "dishes", src: stockPhotos.gallery.dishes[0] },
-  { id: "2", category: "interior", src: stockPhotos.gallery.interior[0] },
-  { id: "3", category: "dishes", src: stockPhotos.gallery.dishes[1] },
-  { id: "4", category: "exterior", src: stockPhotos.gallery.exterior[0] },
-  { id: "5", category: "dishes", src: stockPhotos.gallery.dishes[2] },
-  { id: "6", category: "interior", src: stockPhotos.gallery.interior[1] },
-  { id: "7", category: "dishes", src: stockPhotos.gallery.dishes[3] },
-  { id: "8", category: "exterior", src: stockPhotos.gallery.exterior[1] },
-  { id: "9", category: "interior", src: stockPhotos.gallery.interior[2] },
-  { id: "10", category: "dishes", src: stockPhotos.gallery.dishes[4] },
-  { id: "11", category: "exterior", src: stockPhotos.gallery.exterior[2] },
-  { id: "12", category: "interior", src: stockPhotos.gallery.interior[3] },
+  { id: "f3", category: "exterior", src: "/imagenes/foto3.png" },
+  { id: "f4", category: "interior", src: "/imagenes/foto4.jpg" },
+  { id: "f5", category: "interior", src: "/imagenes/foto5.jpg" },
+  { id: "f6", category: "interior", src: "/imagenes/foto6.jpg" },
+  { id: "f7", category: "interior", src: "/imagenes/foto7.jpg" },
+  { id: "f8", category: "exterior", src: "/imagenes/foto8.jpg" },
+  { id: "f9", category: "exterior", src: "/imagenes/foto9.jpg" },
+  { id: "1", category: "dishes", src: "/imagenes/plato1.jpg" },
+  { id: "2", category: "dishes", src: "/imagenes/plato2.jpg" },
+  { id: "3", category: "dishes", src: "/imagenes/plato3.jpg" },
+  { id: "4", category: "dishes", src: "/imagenes/plato4.jpg" },
+  { id: "5", category: "dishes", src: "/imagenes/plato5.jpg" },
+  { id: "6", category: "dishes", src: "/imagenes/plato6.jpg" },
+  { id: "7", category: "dishes", src: "/imagenes/plato7.jpg" },
+  { id: "8", category: "dishes", src: "/imagenes/plato8.jpg" },
+  { id: "9", category: "dishes", src: "/imagenes/plato9.jpg" },
+  { id: "10", category: "dishes", src: "/imagenes/plato10.jpg" },
+  { id: "11", category: "dishes", src: "/imagenes/plato11.jpg" },
+  { id: "12", category: "dishes", src: "/imagenes/plato12.jpg" },
+  { id: "13", category: "dishes", src: "/imagenes/plato13.jpg" },
+  { id: "14", category: "dishes", src: "/imagenes/plato14.jpg" },
+  { id: "15", category: "dishes", src: "/imagenes/plato15.jpg" },
+  { id: "16", category: "dishes", src: "/imagenes/plato16.jpg" },
+  { id: "17", category: "dishes", src: "/imagenes/plato17.jpg" },
+  { id: "18", category: "dishes", src: "/imagenes/plato18.jpg" },
+  { id: "19", category: "dishes", src: "/imagenes/plato19.jpg" },
+  { id: "20", category: "dishes", src: "/imagenes/plato20.jpg" },
+  { id: "21", category: "dishes", src: "/imagenes/plato21.jpg" },
+  { id: "22", category: "dishes", src: "/imagenes/plato22.jpg" },
+  { id: "23", category: "dishes", src: "/imagenes/plato23.jpg" },
+  { id: "24", category: "dishes", src: "/imagenes/plato24.jpg" },
+  { id: "25", category: "dishes", src: "/imagenes/plato25.jpg" },
+  { id: "26", category: "dishes", src: "/imagenes/plato26.jpg" },
 ];
 
 type GalleryGridProps = {
