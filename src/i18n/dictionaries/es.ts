@@ -123,7 +123,7 @@ export const es: Dictionary = {
     favoriteLabel: "Favorito",
     breakfastOffer: {
       label: "Oferta desayuno",
-      hours: "De 7h a 12h mediodía",
+      hours: "7:00–12:00",
       options: [
         { label: "Café + pasta", price: 2.5 },
         { label: "Café + mini bocata", price: 3.2 },
@@ -142,6 +142,7 @@ export const es: Dictionary = {
     },
     menuDelDia: {
       label: "Menú del día",
+      hours: "13:00–16:00",
       note: "Pan, bebida y postre o café incluidos. La carta cambia a diario.",
       primerosLabel: "Primeros",
       segundosLabel: "Segundos",

@@ -86,6 +86,7 @@ export type Dictionary = {
     };
     menuDelDia: {
       label: string;
+      hours: string;
       note: string;
       primerosLabel: string;
       segundosLabel: string;

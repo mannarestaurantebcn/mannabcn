@@ -60,7 +60,10 @@ export function OfferCards({ breakfast, menuDelDia }: OfferCardsProps) {
       </Reveal>
 
       <Reveal delay={2} className="card-hover border border-gold/40 bg-gold/5 p-6">
-        <h3 className="font-display text-xl italic text-charcoal">{menuDelDia.label}</h3>
+        <div className="flex items-baseline justify-between gap-4">
+          <h3 className="font-display text-xl italic text-charcoal">{menuDelDia.label}</h3>
+          <span className="text-[0.7rem] uppercase tracking-[0.12em] text-charcoal/45">{menuDelDia.hours}</span>
+        </div>
         <p className="mt-2 text-sm text-charcoal/60">{menuDelDia.note}</p>
 
         <div className="mt-6 grid gap-8 sm:grid-cols-3">

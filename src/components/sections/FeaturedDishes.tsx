@@ -16,10 +16,10 @@ type FeaturedDishesProps = {
 
 // Keyed by the dish's printed menu number (see lib/menu-data.ts).
 const dishPhotosByNumber: Record<number, string> = {
-  91: "/imagenes/plato7.jpg",
-  94: "/imagenes/plato23.jpg",
-  22: "/imagenes/plato13.jpg",
-  34: "/imagenes/plato8.jpg",
+  5: "/imagenes/plato27.jpeg",
+  19: "/imagenes/plato28.jpeg",
+  24: "/imagenes/plato29.jpeg",
+  52: "/imagenes/plato30.jpeg",
   35: "/imagenes/plato18.jpg",
   40: "/imagenes/plato22.jpg",
 };
@@ -27,7 +27,7 @@ const dishPhotosByNumber: Record<number, string> = {
 export async function FeaturedDishes({ locale, home, placeholderLabel }: FeaturedDishesProps) {
   const categories = await getMenuCategories();
   const allItems = categories.flatMap(cat => cat.items);
-  const featuredNumbers = [91, 94, 22, 34, 35, 40];
+  const featuredNumbers = [5, 19, 24, 52, 35, 40];
   const items = featuredNumbers
     .map(num => allItems.find(item => item.number === num))
     .filter((item) => item !== undefined)

@@ -1,5 +1,5 @@
 export const stockPhotos = {
-  editorialSplit: "/imagenes/foto7.jpg",
+  editorialSplit: "/imagenes/foto14.jpeg",
 
   galleryTeaser: [
     "/imagenes/plato4.jpg",
