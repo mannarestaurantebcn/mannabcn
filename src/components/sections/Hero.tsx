@@ -25,7 +25,7 @@ export function Hero({ locale, home, placeholderLabel }: HeroProps) {
 
       <div className="relative z-10 max-w-[900px] px-6">
         <Reveal>
-          <span className="mb-6 block text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-cream/60">
+          <span className="mb-6 block text-[0.85rem] font-semibold uppercase tracking-[0.3em] text-cream/85">
             {home.heroEyebrow}
           </span>
         </Reveal>
