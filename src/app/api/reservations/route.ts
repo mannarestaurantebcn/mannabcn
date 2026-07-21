@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { isLocale, type Locale } from "@/i18n/config";
 import { createReservationEvent, SlotBlockedError, SlotFullError, type ReservationInput } from "@/lib/google-calendar";
 import { isTimeSlotValid } from "@/lib/opening-hours";
-import { sendReservationConfirmationEmail } from "@/lib/email";
+import { sendReservationConfirmationEmail, sendReservationNotificationEmail } from "@/lib/email";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_RE = /^[0-9+()\-\s]{6,30}$/;
@@ -39,7 +39,7 @@ function parseReservationInput(
   }
 
   const guestsNumber = typeof guests === "number" ? guests : Number(guests);
-  if (!Number.isInteger(guestsNumber) || guestsNumber < 1 || guestsNumber > 40) {
+  if (!Number.isInteger(guestsNumber) || guestsNumber < 1 || guestsNumber > 80) {
     return { ok: false, error: "invalid_guests" };
   }
 
@@ -96,11 +96,17 @@ export async function POST(request: Request) {
   }
 
   // The reservation itself is already booked at this point — a failed confirmation
-  // email shouldn't turn into an error for the customer, just get logged.
+  // or notification email shouldn't turn into an error for the customer, just get logged.
   try {
     await sendReservationConfirmationEmail(parsed.data, parsed.locale);
   } catch (error) {
     console.error("[api/reservations] Failed to send confirmation email:", error);
+  }
+
+  try {
+    await sendReservationNotificationEmail(parsed.data, parsed.locale);
+  } catch (error) {
+    console.error("[api/reservations] Failed to send restaurant notification email:", error);
   }
 
   return NextResponse.json({ ok: true });

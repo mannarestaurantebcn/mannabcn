@@ -204,7 +204,7 @@ export function ReservationForm({ form, locale }: ReservationFormProps) {
           type="number"
           inputMode="numeric"
           min={1}
-          max={40}
+          max={80}
           required
           className={inputClass}
         />

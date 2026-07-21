@@ -98,15 +98,58 @@ export async function sendReservationConfirmationEmail(reservation: ReservationI
   });
 }
 
+function escapeHtml(value: string) {
+  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/** Notifies the restaurant's own inbox whenever a customer books through the site. */
+export async function sendReservationNotificationEmail(reservation: ReservationInput, locale: Locale) {
+  const transporter = getTransporter();
+  const restaurantEmail = getEnv("GMAIL_USER");
+
+  const html = `
+    <div style="font-family: Arial, sans-serif; color: #2a1006; max-width: 480px; margin: 0 auto;">
+      <h2 style="color: #430C05;">Nueva reserva desde la web</h2>
+      <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+        <tr><td style="padding: 6px 0; color: #666;">Nombre</td><td style="padding: 6px 0; font-weight: bold;">${escapeHtml(reservation.name)}</td></tr>
+        <tr><td style="padding: 6px 0; color: #666;">Teléfono</td><td style="padding: 6px 0; font-weight: bold;">${escapeHtml(reservation.phone)}</td></tr>
+        <tr><td style="padding: 6px 0; color: #666;">Email</td><td style="padding: 6px 0; font-weight: bold;">${escapeHtml(reservation.email)}</td></tr>
+        <tr><td style="padding: 6px 0; color: #666;">Fecha</td><td style="padding: 6px 0; font-weight: bold;">${formatDate(reservation.date, locale)}</td></tr>
+        <tr><td style="padding: 6px 0; color: #666;">Hora</td><td style="padding: 6px 0; font-weight: bold;">${reservation.time}</td></tr>
+        <tr><td style="padding: 6px 0; color: #666;">Personas</td><td style="padding: 6px 0; font-weight: bold;">${reservation.guests}</td></tr>
+        ${reservation.requests ? `<tr><td style="padding: 6px 0; color: #666;">Peticiones especiales</td><td style="padding: 6px 0; font-weight: bold;">${escapeHtml(reservation.requests)}</td></tr>` : ""}
+      </table>
+      <p style="color: #999; font-size: 0.85em;">Reserva ya registrada en el calendario — este email es solo un aviso.</p>
+    </div>
+  `;
+
+  const text = [
+    "Nueva reserva desde la web",
+    "",
+    `Nombre: ${reservation.name}`,
+    `Teléfono: ${reservation.phone}`,
+    `Email: ${reservation.email}`,
+    `Fecha: ${formatDate(reservation.date, locale)}`,
+    `Hora: ${reservation.time}`,
+    `Personas: ${reservation.guests}`,
+    ...(reservation.requests ? [`Peticiones especiales: ${reservation.requests}`] : []),
+  ].join("\n");
+
+  await transporter.sendMail({
+    from: `Mannà Restaurante <${restaurantEmail}>`,
+    to: restaurantEmail,
+    replyTo: reservation.email,
+    subject: `Nueva reserva: ${reservation.name} — ${formatDate(reservation.date, locale)} ${reservation.time}`,
+    text,
+    html,
+  });
+}
+
 type ContactMessageInput = {
   name: string;
   email: string;
   message: string;
 };
-
-function escapeHtml(value: string) {
-  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
 
 /** Forwards a contact form submission to the restaurant's own inbox, with the visitor set as reply-to. */
 export async function sendContactMessage(input: ContactMessageInput) {
