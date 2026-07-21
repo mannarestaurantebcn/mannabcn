@@ -143,14 +143,38 @@ export function MenuTabs({
 
   return (
     <div>
-      <button
-        type="button"
-        onClick={() => setSelectedTab(null)}
-        className="mb-8 inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-charcoal/60 transition-colors duration-200 hover:text-gold"
-      >
-        <BackArrowIcon />
-        {backToMenuLabel}
-      </button>
+      <div className="mb-8 flex flex-col items-center gap-6">
+        <button
+          type="button"
+          onClick={() => setSelectedTab(null)}
+          className="inline-flex items-center gap-2 self-start text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-charcoal/60 transition-colors duration-200 hover:text-gold"
+        >
+          <BackArrowIcon />
+          {backToMenuLabel}
+        </button>
+
+        {selectedTab === "food" && (
+          <a
+            href="/documents/carta-manna.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-gold hover:text-gold-dark"
+          >
+            {downloadPdf}
+          </a>
+        )}
+
+        {selectedTab === "drinks" && (
+          <a
+            href="/documents/carta-bebidas-manna.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-gold hover:text-gold-dark"
+          >
+            {downloadPdfDrinks}
+          </a>
+        )}
+      </div>
 
       {selectedTab === "breakfast" && (
         <div>
@@ -175,16 +199,8 @@ export function MenuTabs({
             favoriteLabel={favoriteLabel}
             backToTopLabel={backToTopLabel}
           />
-          <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">
+          <div className="mt-12 border-t border-line pt-6">
             <p className="max-w-[52ch] text-[0.8rem] text-charcoal/50">{priceHiddenNote}</p>
-            <a
-              href="/documents/carta-manna.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-gold hover:text-gold-dark"
-            >
-              {downloadPdf}
-            </a>
           </div>
           <div className="mb-4 mt-10">
             <AllergenLegend locale={locale} title={allergenLegendTitle} />
@@ -202,16 +218,8 @@ export function MenuTabs({
             favoriteLabel={favoriteLabel}
             backToTopLabel={backToTopLabel}
           />
-          <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">
+          <div className="mt-12 border-t border-line pt-6">
             <p className="max-w-[52ch] text-[0.8rem] text-charcoal/50">{priceHiddenNote}</p>
-            <a
-              href="/documents/carta-bebidas-manna.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-gold hover:text-gold-dark"
-            >
-              {downloadPdfDrinks}
-            </a>
           </div>
         </div>
       )}
