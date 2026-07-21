@@ -10,11 +10,8 @@ type GalleryItem = { id: string; category: GalleryCategory; src: string };
 
 const items: GalleryItem[] = [
   { id: "f3", category: "exterior", src: "/imagenes/foto3.png" },
-  { id: "f4", category: "interior", src: "/imagenes/foto4.jpg" },
   { id: "f5", category: "interior", src: "/imagenes/foto5.jpg" },
-  { id: "f6", category: "interior", src: "/imagenes/foto6.jpg" },
   { id: "f7", category: "interior", src: "/imagenes/foto7.jpg" },
-  { id: "f8", category: "exterior", src: "/imagenes/foto8.jpg" },
   { id: "f9", category: "exterior", src: "/imagenes/foto9.jpg" },
   { id: "f10", category: "dishes", src: "/imagenes/foto10.jpeg" },
   { id: "f11", category: "dishes", src: "/imagenes/foto11.jpeg" },

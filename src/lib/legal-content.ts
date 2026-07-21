@@ -21,19 +21,18 @@ export const legalNotice: Record<Locale, LegalPageContent> = {
   es: {
     title: "Aviso legal",
     description: "Aviso legal del sitio web de Mannà Restaurant, Barcelona.",
-    updated: "Última actualización: [FECHA]",
+    updated: "Última actualización: 21/07/2026",
     sections: [
       {
         heading: "1. Datos identificativos",
         paragraphs: [
-          `En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los siguientes datos: el presente sitio web es titularidad de ${BUSINESS_NAME} (nombre comercial), con NIF/CIF [NIF/CIF DEL TITULAR], domicilio en ${ADDRESS}, correo electrónico de contacto ${EMAIL} y teléfono ${PHONE}.`,
-          "[Si el titular está inscrito en el Registro Mercantil u otro registro público, indicar aquí los datos de inscripción.]",
-        ],
+          `En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los siguientes datos: el presente sitio web es titularidad de ${BUSINESS_NAME} (nombre comercial), con NIF/CIF y7974280x, domicilio en ${ADDRESS}, correo electrónico de contacto ${EMAIL} y teléfono ${PHONE}.`,
+                ],
       },
       {
         heading: "2. Objeto",
         paragraphs: [
-          `El presente sitio web (en adelante, "el sitio web"), accesible en [DOMINIO DEL SITIO WEB], tiene como finalidad informar sobre la actividad y los servicios de ${BUSINESS_NAME}, mostrar la carta del restaurante, y permitir a los usuarios solicitar reservas de mesa y ponerse en contacto con el restaurante.`,
+          `El presente sitio web (en adelante, "el sitio web"), accesible en www.mannarestaurantebcn.es, tiene como finalidad informar sobre la actividad y los servicios de ${BUSINESS_NAME}, mostrar la carta del restaurante, y permitir a los usuarios solicitar reservas de mesa y ponerse en contacto con el restaurante.`,
         ],
       },
       {
@@ -64,7 +63,7 @@ export const legalNotice: Record<Locale, LegalPageContent> = {
       {
         heading: "7. Legislación aplicable y jurisdicción",
         paragraphs: [
-          "Las presentes condiciones se rigen por la legislación española. Para la resolución de cualquier controversia derivada del acceso o uso del sitio web, las partes se someten a los juzgados y tribunales de [CIUDAD, PROVINCIA], salvo que la normativa aplicable en materia de consumidores y usuarios establezca otro fuero.",
+          "Las presentes condiciones se rigen por la legislación española. Para la resolución de cualquier controversia derivada del acceso o uso del sitio web, las partes se someten a los juzgados y tribunales de Barcelona ciudad, salvo que la normativa aplicable en materia de consumidores y usuarios establezca otro fuero.",
         ],
       },
     ],
@@ -72,19 +71,19 @@ export const legalNotice: Record<Locale, LegalPageContent> = {
   en: {
     title: "Legal notice",
     description: "Legal notice for the Mannà Restaurant website, Barcelona.",
-    updated: "Last updated: [DATE]",
+    updated: "Last updated: 21/07/2026",
     sections: [
       {
         heading: "1. Identifying information",
         paragraphs: [
-          `In compliance with Spanish Law 34/2002 on Information Society Services and Electronic Commerce (LSSI-CE), this website is owned by ${BUSINESS_NAME} (trade name), with tax ID [OWNER'S TAX ID], registered address at ${ADDRESS}, contact email ${EMAIL}, and phone ${PHONE}.`,
+          `In compliance with Spanish Law 34/2002 on Information Society Services and Electronic Commerce (LSSI-CE), this website is owned by ${BUSINESS_NAME} (trade name), with tax ID y7974280x, registered address at ${ADDRESS}, contact email ${EMAIL}, and phone ${PHONE}.`,
           "[If the owner is registered with the Spanish Commercial Registry or another public register, add those details here.]",
         ],
       },
       {
         heading: "2. Purpose",
         paragraphs: [
-          `This website (the "website"), available at [WEBSITE DOMAIN], provides information about ${BUSINESS_NAME}'s activity and services, displays the restaurant's menu, and allows users to request table reservations and get in touch with the restaurant.`,
+          `This website (the "website"), available at www.mannarestaurantebcn.es , provides information about ${BUSINESS_NAME}'s activity and services, displays the restaurant's menu, and allows users to request table reservations and get in touch with the restaurant.`,
         ],
       },
       {
@@ -115,7 +114,7 @@ export const legalNotice: Record<Locale, LegalPageContent> = {
       {
         heading: "7. Applicable law and jurisdiction",
         paragraphs: [
-          "These terms are governed by Spanish law. Any dispute arising from access to or use of the website shall be submitted to the courts of [CITY, PROVINCE], unless applicable consumer protection law establishes a different venue.",
+          "These terms are governed by Spanish law. Any dispute arising from access to or use of the website shall be submitted to the courts of Barcelona ciudad, unless applicable consumer protection law establishes a different venue.",
         ],
       },
     ],
@@ -127,12 +126,12 @@ export const privacyPolicy: Record<Locale, LegalPageContent> = {
     title: "Política de privacidad",
     description:
       "Política de privacidad de Mannà Restaurant: cómo tratamos tus datos personales al reservar mesa o contactar con nosotros.",
-    updated: "Última actualización: [FECHA]",
+    updated: "Última actualización: 21/07/2026",
     sections: [
       {
         heading: "1. Responsable del tratamiento",
         paragraphs: [
-          `El responsable del tratamiento de los datos personales recabados a través de este sitio web es ${BUSINESS_NAME}, con NIF/CIF [NIF/CIF], domicilio en ${ADDRESS} y correo electrónico ${EMAIL}.`,
+          `El responsable del tratamiento de los datos personales recabados a través de este sitio web es ${BUSINESS_NAME}, con NIF/CIF y7974280x, domicilio en ${ADDRESS} y correo electrónico ${EMAIL}.`,
         ],
       },
       {
@@ -186,12 +185,12 @@ export const privacyPolicy: Record<Locale, LegalPageContent> = {
     title: "Privacy policy",
     description:
       "Mannà Restaurant's privacy policy: how we handle your personal data when booking a table or contacting us.",
-    updated: "Last updated: [DATE]",
+    updated: "Last updated: 21/07/2026",
     sections: [
       {
         heading: "1. Data controller",
         paragraphs: [
-          `The controller responsible for the personal data collected through this website is ${BUSINESS_NAME}, tax ID [TAX ID], registered address at ${ADDRESS}, and contact email ${EMAIL}.`,
+          `The controller responsible for the personal data collected through this website is ${BUSINESS_NAME}, tax ID y7974280x, registered address at ${ADDRESS}, and contact email ${EMAIL}.`,
         ],
       },
       {
@@ -247,7 +246,7 @@ export const cookiesPolicy: Record<Locale, LegalPageContent> = {
   es: {
     title: "Política de cookies",
     description: "Política de cookies de Mannà Restaurant: qué cookies usamos en nuestro sitio web y cómo gestionarlas.",
-    updated: "Última actualización: [FECHA]",
+    updated: "Última actualización: 21/07/2026",
     sections: [
       {
         heading: "1. ¿Qué son las cookies?",
@@ -279,7 +278,7 @@ export const cookiesPolicy: Record<Locale, LegalPageContent> = {
   en: {
     title: "Cookie policy",
     description: "Mannà Restaurant's cookie policy: which cookies we use on our website and how to manage them.",
-    updated: "Last updated: [DATE]",
+    updated: "Last updated: 21/07/2026",
     sections: [
       {
         heading: "1. What are cookies?",
@@ -314,7 +313,7 @@ export const termsOfUse: Record<Locale, LegalPageContent> = {
   es: {
     title: "Términos y condiciones de uso",
     description: "Términos y condiciones de uso del sitio web de Mannà Restaurant, Barcelona.",
-    updated: "Última actualización: [FECHA]",
+    updated: "Última actualización: 21/07/2026",
     sections: [
       {
         heading: "1. Objeto y aceptación",
@@ -355,7 +354,7 @@ export const termsOfUse: Record<Locale, LegalPageContent> = {
       {
         heading: "7. Legislación aplicable",
         paragraphs: [
-          "Estos términos se rigen por la legislación española, sometiéndose las partes a los juzgados y tribunales de [CIUDAD, PROVINCIA], salvo que la normativa de consumidores establezca otro fuero.",
+          "Estos términos se rigen por la legislación española, sometiéndose las partes a los juzgados y tribunales de Barcelona ciudad , salvo que la normativa de consumidores establezca otro fuero.",
         ],
       },
     ],
@@ -363,7 +362,7 @@ export const termsOfUse: Record<Locale, LegalPageContent> = {
   en: {
     title: "Terms and conditions of use",
     description: "Terms and conditions of use for the Mannà Restaurant website, Barcelona.",
-    updated: "Last updated: [DATE]",
+    updated: "Last updated: 21/07/2026",
     sections: [
       {
         heading: "1. Purpose and acceptance",
@@ -404,7 +403,7 @@ export const termsOfUse: Record<Locale, LegalPageContent> = {
       {
         heading: "7. Applicable law",
         paragraphs: [
-          "These terms are governed by Spanish law, and the parties submit to the courts of [CITY, PROVINCE], unless applicable consumer protection law establishes a different venue.",
+          "These terms are governed by Spanish law, and the parties submit to the courts of Barcelona ciudad, unless applicable consumer protection law establishes a different venue.",
         ],
       },
     ],
