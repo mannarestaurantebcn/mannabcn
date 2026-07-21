@@ -18,7 +18,7 @@ export function HeroBackground({ label }: { label: string }) {
 
   return (
     <div ref={ref} className="absolute inset-[-12%] will-change-transform">
-      <PlaceholderImage label={label} src={"/imagenes/foto13.jpeg"} className="h-full w-full" />
+      <PlaceholderImage label={label} src={"foto-hero.jpeg"} className="h-full w-full" />
       <div className="absolute inset-0 bg-gradient-to-b from-charcoal/55 via-charcoal/35 to-charcoal/70" />
     </div>
   );

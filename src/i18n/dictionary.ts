@@ -105,6 +105,14 @@ export type Dictionary = {
       food: string;
       drinks: string;
     };
+    tabs: {
+      breakfast: string;
+      menuDelDia: string;
+      food: string;
+      drinks: string;
+    };
+    backToTop: string;
+    backToMenu: string;
   };
   reservation: {
     eyebrow: string;

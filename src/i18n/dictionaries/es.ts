@@ -197,6 +197,14 @@ export const es: Dictionary = {
       food: "Para comer",
       drinks: "Para beber",
     },
+    tabs: {
+      breakfast: "Oferta del desayuno",
+      menuDelDia: "Menú del día",
+      food: "Carta de comida",
+      drinks: "Carta de bebidas",
+    },
+    backToTop: "Volver arriba",
+    backToMenu: "Volver",
   },
   reservation: {
     eyebrow: "Reservas",

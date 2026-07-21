@@ -6,9 +6,7 @@ import { buildPageMetadata } from "@/lib/seo";
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { OfferCards } from "@/components/menu/OfferCards";
-import { MenuBrowser } from "@/components/menu/MenuBrowser";
-import { AllergenLegend } from "@/components/menu/AllergenLegend";
+import { MenuTabs } from "@/components/menu/MenuTabs";
 import { getMenuCategories } from "@/lib/menu-data";
 import { getBreakfastOfferData, getMenuDelDiaData } from "@/lib/offers-data";
 
@@ -43,57 +41,35 @@ export default async function MenuPage({ params }: { params: Promise<PageParams>
   ]);
   const breakfast = { ...menu.breakfastOffer, ...breakfastData };
   const menuDelDia = { ...menu.menuDelDia, ...menuDelDiaData };
+  const foodCategories = categories.filter((category) => category.group === "food");
+  const drinkCategories = categories.filter((category) => category.group === "drinks");
 
   return (
     <SubpageShell>
-      <div className="mx-auto max-w-[1400px] px-6 pb-16 pt-16 md:px-10 md:pt-20">
+      <div className="mx-auto max-w-[1400px] px-6 pb-20 pt-16 md:px-10 md:pt-20">
         <Reveal>
           <SectionHeading eyebrow={menu.eyebrow} title={menu.title} subtitle={menu.subtitle} tone="dark" />
         </Reveal>
 
-        <Reveal delay={1} className="mt-10">
-          <OfferCards breakfast={breakfast} menuDelDia={menuDelDia} />
+        <Reveal delay={1} className="mt-12">
+          <MenuTabs
+            locale={locale}
+            tabLabels={menu.tabs}
+            breakfast={breakfast}
+            menuDelDia={menuDelDia}
+            foodCategories={foodCategories}
+            drinkCategories={drinkCategories}
+            categoryLabels={menu.categories}
+            favoriteLabel={menu.favoriteLabel}
+            priceHiddenNote={menu.priceHiddenNote}
+            downloadPdf={menu.downloadPdf}
+            downloadPdfDrinks={menu.downloadPdfDrinks}
+            allergenLegendTitle={menu.allergenLegendTitle}
+            allergenNote={menu.allergenNote}
+            backToTopLabel={menu.backToTop}
+            backToMenuLabel={menu.backToMenu}
+          />
         </Reveal>
-
-        <Reveal
-          delay={2}
-          className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6"
-        >
-          <p className="max-w-[52ch] text-[0.8rem] text-charcoal/50">{menu.priceHiddenNote}</p>
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <a
-              href="/documents/carta-manna.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-gold hover:text-gold-dark"
-            >
-              {menu.downloadPdf}
-            </a>
-            <a
-              href="/documents/carta-bebidas-manna.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-gold hover:text-gold-dark"
-            >
-              {menu.downloadPdfDrinks}
-            </a>
-          </div>
-        </Reveal>
-      </div>
-
-      <div className="mx-auto max-w-[1400px] px-6 pt-12 md:px-10">
-        <MenuBrowser
-          categories={categories}
-          categoryLabels={menu.categories}
-          groupLabels={menu.groupLabels}
-          locale={locale}
-          favoriteLabel={menu.favoriteLabel}
-        />
-
-        <div className="mb-20 mt-16">
-          <AllergenLegend locale={locale} title={menu.allergenLegendTitle} />
-          <p className="mt-6 text-[0.8rem] text-charcoal/50">{menu.allergenNote}</p>
-        </div>
       </div>
     </SubpageShell>
   );

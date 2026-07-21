@@ -58,7 +58,7 @@ export function AboutTeaser({ locale, home, placeholderLabel }: AboutTeaserProps
         <Reveal delay={2}>
           <PlaceholderImage
             label={placeholderLabel}
-            src="/imagenes/foto3.png"
+            src="/imagenes/foto13.jpeg"
             className="card-hover h-[420px] w-full md:h-[560px]"
           />
         </Reveal>

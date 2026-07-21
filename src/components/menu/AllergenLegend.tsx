@@ -9,17 +9,18 @@ type AllergenLegendProps = {
 
 export function AllergenLegend({ locale, title }: AllergenLegendProps) {
   return (
-    <div className="bg-gold p-6 md:p-8">
-      <h3 className="mb-5 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-cream/85">
+    <div className="text-center">
+      <h3 className="mb-5 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-charcoal/50">
         {title}
       </h3>
-      <ul className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 md:grid-cols-4">
-        {ALLERGEN_CODES.map((code) => {
+      <ul className="flex flex-wrap justify-center gap-x-4 gap-y-5">
+        {ALLERGEN_CODES.map((code, index) => {
           const label = allergenLabels[code];
           return (
-            <li key={code} className="flex flex-col items-center gap-2 text-center text-[0.7rem] text-cream">
+            <li key={code} className="flex w-[68px] flex-col items-center gap-1 text-center">
+              <span className="text-[0.6rem] font-semibold text-charcoal/35">{index + 1}</span>
               <AllergenIcon code={code} size={40} />
-              <span>{label[locale]}</span>
+              <span className="text-[0.6rem] leading-tight text-charcoal/60">{label[locale]}</span>
             </li>
           );
         })}
