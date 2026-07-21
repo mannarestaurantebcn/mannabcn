@@ -24,7 +24,6 @@ const items: GalleryItem[] = [
   { id: "f19", category: "exterior", src: "/imagenes/foto20.jpeg" },
   { id: "f20", category: "exterior", src: "/imagenes/foto21.jpeg" },
   { id: "f21", category: "interior", src: "/imagenes/foto22.jpeg" },
-  { id: "f22", category: "dishes", src: "/imagenes/foto12.jpeg" },
   { id: "1", category: "dishes", src: "/imagenes/plato1.jpg" },
   { id: "2", category: "dishes", src: "/imagenes/plato2.jpg" },
   { id: "3", category: "dishes", src: "/imagenes/plato3.jpg" },
