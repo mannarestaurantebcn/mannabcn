@@ -163,17 +163,6 @@ export function MenuTabs({
             {downloadPdf}
           </a>
         )}
-
-        {selectedTab === "drinks" && (
-          <a
-            href="/documents/carta-bebidas-manna.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-gold hover:text-gold-dark"
-          >
-            {downloadPdfDrinks}
-          </a>
-        )}
       </div>
 
       {selectedTab === "breakfast" && (
